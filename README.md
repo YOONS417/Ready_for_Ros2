@@ -12,7 +12,9 @@ temporary repository for testing
 
 ### 사용자 정보 등록
 터미널(Terminal) 또는 Git Bash를 열고 아래 명령어를 입력하여 본인의 정보를 등록합니다.
+
 git config --global user.name "본인의 GitHub 이름"
+
 git config --global user.email "본인의 GitHub 이메일"
 
 
@@ -22,8 +24,10 @@ git clone [https://github.com/소유자ID/레포지토리이름.git](https://git
 cd 레포지토리이름
 
 
+
 ### 1단계: 최신 코드 불러오기 (작업 시작 전 필수!)
 다른 팀원이 올려둔 코드가 있을 수 있으므로 작업 전 항상 최신 상태로 업데이트
+
 
 
 ### 2단계: 변경된 파일 올릴 준비하기 (Git Add)
@@ -35,9 +39,11 @@ git add .
 git add 파일이름
 
 
+
 ### 3단계: 변경 사항 기록하기 (Git Commit)
 어떤 작업을 했는지 알 수 있도록 메시지와 함께 저장합니다.
 git commit -m "feat: 로그인 기능 추가"
+
 
 
 ### 4단계: GitHub에 반영하기 (Git Push)
