@@ -19,15 +19,16 @@ temporary repository for testing
 
 
 ### 작업할 로컬 폴더로 이동한 후 아래 명령어로 원격 저장소를 내 컴퓨터로 복사
-git clone https://github.com/YOONS417/Ready_for_Ros2.git
+ git clone https://github.com/YOONS417/Ready_for_Ros2.git
 
-cd Ready_for_Ros2
+ cd Ready_for_Ros2
 
 
 
 # 1단계: 최신 코드 불러오기 (작업 시작 전 필수!)
-다른 팀원이 올려둔 코드가 있을 수 있으므로 작업 전 항상 최신 상태로 업데이트.
+다른 팀원이 올려둔 코드가 있을 수 있으므로 작업 전 항상 최신 상태로 업데이트.                              
  git pull origin main
+
 
 
 # 2단계: 변경된 파일 올릴 준비하기 (Git Add)
