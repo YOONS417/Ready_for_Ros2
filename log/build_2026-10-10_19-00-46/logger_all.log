@@ -1,0 +1,521 @@
+[0.073s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.073s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x74bcbfb55b70>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x74bcbfb55510>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x74bcbfb55510>>, mixin_verb=('build',))
+[0.180s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.180s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.180s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.180s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.180s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.180s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.180s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/yoonsik/ros2_workspace'
+[0.180s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.180s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.180s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.180s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.180s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.180s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.180s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.180s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.180s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extensions ['ignore', 'ignore_ament_install']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'ignore'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'ignore_ament_install'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extensions ['colcon_pkg']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'colcon_pkg'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extensions ['colcon_meta']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'colcon_meta'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extensions ['ros']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'ros'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extensions ['cmake', 'python']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'cmake'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'python'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extensions ['python_setup_py']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'python_setup_py'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extensions ['ignore', 'ignore_ament_install']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'ignore'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'ignore_ament_install'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extensions ['colcon_pkg']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'colcon_pkg'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extensions ['colcon_meta']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'colcon_meta'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extensions ['ros']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'ros'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extensions ['cmake', 'python']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'cmake'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'python'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extensions ['python_setup_py']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'python_setup_py'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'ignore'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'ignore_ament_install'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extensions ['colcon_pkg']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'colcon_pkg'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extensions ['colcon_meta']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'colcon_meta'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extensions ['ros']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_interfaces) by extension 'ros'
+[0.189s] DEBUG:colcon.colcon_core.package_identification:Package 'src/action_tutorials_interfaces' with type 'ros.ament_cmake' and name 'action_tutorials_interfaces'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_py) by extensions ['ignore', 'ignore_ament_install']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_py) by extension 'ignore'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_py) by extension 'ignore_ament_install'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_py) by extensions ['colcon_pkg']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_py) by extension 'colcon_pkg'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_py) by extensions ['colcon_meta']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_py) by extension 'colcon_meta'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_py) by extensions ['ros']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/action_tutorials_py) by extension 'ros'
+[0.190s] DEBUG:colcon.colcon_core.package_identification:Package 'src/action_tutorials_py' with type 'ros.ament_python' and name 'action_tutorials_py'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab01) by extensions ['ignore', 'ignore_ament_install']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab01) by extension 'ignore'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab01) by extension 'ignore_ament_install'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab01) by extensions ['colcon_pkg']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab01) by extension 'colcon_pkg'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab01) by extensions ['colcon_meta']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab01) by extension 'colcon_meta'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab01) by extensions ['ros']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab01) by extension 'ros'
+[0.191s] DEBUG:colcon.colcon_core.package_identification:Package 'src/lab01' with type 'ros.ament_python' and name 'lab01'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02) by extensions ['ignore', 'ignore_ament_install']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02) by extension 'ignore'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02) by extension 'ignore_ament_install'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02) by extensions ['colcon_pkg']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02) by extension 'colcon_pkg'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02) by extensions ['colcon_meta']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02) by extension 'colcon_meta'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02) by extensions ['ros']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02) by extension 'ros'
+[0.191s] DEBUG:colcon.colcon_core.package_identification:Package 'src/lab02' with type 'ros.ament_python' and name 'lab02'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02_interfaces) by extension 'ignore'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02_interfaces) by extension 'ignore_ament_install'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02_interfaces) by extensions ['colcon_pkg']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02_interfaces) by extension 'colcon_pkg'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02_interfaces) by extensions ['colcon_meta']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02_interfaces) by extension 'colcon_meta'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02_interfaces) by extensions ['ros']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/lab02_interfaces) by extension 'ros'
+[0.192s] DEBUG:colcon.colcon_core.package_identification:Package 'src/lab02_interfaces' with type 'ros.ament_cmake' and name 'lab02_interfaces'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extensions ['ignore', 'ignore_ament_install']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'ignore'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'ignore_ament_install'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extensions ['colcon_pkg']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'colcon_pkg'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extensions ['colcon_meta']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'colcon_meta'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extensions ['ros']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'ros'
+[0.192s] DEBUG:colcon.colcon_core.package_identification:Package 'src/py_pubsub' with type 'ros.ament_python' and name 'py_pubsub'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_srvcli) by extensions ['ignore', 'ignore_ament_install']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_srvcli) by extension 'ignore'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_srvcli) by extension 'ignore_ament_install'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_srvcli) by extensions ['colcon_pkg']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_srvcli) by extension 'colcon_pkg'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_srvcli) by extensions ['colcon_meta']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_srvcli) by extension 'colcon_meta'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_srvcli) by extensions ['ros']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_srvcli) by extension 'ros'
+[0.193s] DEBUG:colcon.colcon_core.package_identification:Package 'src/py_srvcli' with type 'ros.ament_python' and name 'py_srvcli'
+[0.193s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.193s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.193s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.193s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.193s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.213s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.213s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.215s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 346 installed packages in /opt/ros/humble
+[0.215s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.233s] WARNING:colcon.colcon_core.package_selection:Some selected packages are already built in one or more underlay workspaces:
+	'action_tutorials_interfaces' is in: /opt/ros/humble
+	'action_tutorials_py' is in: /opt/ros/humble
+If a package in a merged underlay workspace is overridden and it installs headers, then all packages in the overlay must sort their include directories by workspace order. Failure to do so may result in build failures or undefined behavior at run time.
+If the overridden package is used by another package in any underlay, then the overriding package in the overlay must be API and ABI compatible or undefined behavior at run time may occur.
+
+If you understand the risks and want to override a package anyways, add the following to the command line:
+	--allow-overriding action_tutorials_interfaces action_tutorials_py
+
+This may be promoted to an error in a future release of colcon-override-check.
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_args' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_target' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.233s] DEBUG:colcon.colcon_core.verb:Building package 'action_tutorials_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/yoonsik/ros2_workspace/build/action_tutorials_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces', 'merge_install': False, 'path': '/home/yoonsik/ros2_workspace/src/action_tutorials_interfaces', 'symlink_install': False, 'test_result_base': None}
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_py' build argument 'cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_py' build argument 'cmake_target' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_py' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_py' build argument 'cmake_clean_cache' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_py' build argument 'cmake_clean_first' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_py' build argument 'cmake_force_configure' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_py' build argument 'ament_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_py' build argument 'catkin_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'action_tutorials_py' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.234s] DEBUG:colcon.colcon_core.verb:Building package 'action_tutorials_py' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/yoonsik/ros2_workspace/build/action_tutorials_py', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/yoonsik/ros2_workspace/install/action_tutorials_py', 'merge_install': False, 'path': '/home/yoonsik/ros2_workspace/src/action_tutorials_py', 'symlink_install': False, 'test_result_base': None}
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab01' build argument 'cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab01' build argument 'cmake_target' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab01' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab01' build argument 'cmake_clean_cache' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab01' build argument 'cmake_clean_first' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab01' build argument 'cmake_force_configure' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab01' build argument 'ament_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab01' build argument 'catkin_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab01' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.234s] DEBUG:colcon.colcon_core.verb:Building package 'lab01' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/yoonsik/ros2_workspace/build/lab01', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/yoonsik/ros2_workspace/install/lab01', 'merge_install': False, 'path': '/home/yoonsik/ros2_workspace/src/lab01', 'symlink_install': False, 'test_result_base': None}
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02' build argument 'cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02' build argument 'cmake_target' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02' build argument 'cmake_clean_cache' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02' build argument 'cmake_clean_first' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02' build argument 'cmake_force_configure' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02' build argument 'ament_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02' build argument 'catkin_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.234s] DEBUG:colcon.colcon_core.verb:Building package 'lab02' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/yoonsik/ros2_workspace/build/lab02', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/yoonsik/ros2_workspace/install/lab02', 'merge_install': False, 'path': '/home/yoonsik/ros2_workspace/src/lab02', 'symlink_install': False, 'test_result_base': None}
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02_interfaces' build argument 'cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02_interfaces' build argument 'cmake_target' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'lab02_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.234s] DEBUG:colcon.colcon_core.verb:Building package 'lab02_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/yoonsik/ros2_workspace/build/lab02_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/yoonsik/ros2_workspace/install/lab02_interfaces', 'merge_install': False, 'path': '/home/yoonsik/ros2_workspace/src/lab02_interfaces', 'symlink_install': False, 'test_result_base': None}
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_args' from command line to 'None'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_target' from command line to 'None'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_clean_cache' from command line to 'False'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_clean_first' from command line to 'False'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_force_configure' from command line to 'False'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'ament_cmake_args' from command line to 'None'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'catkin_cmake_args' from command line to 'None'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.235s] DEBUG:colcon.colcon_core.verb:Building package 'py_pubsub' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/yoonsik/ros2_workspace/build/py_pubsub', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/yoonsik/ros2_workspace/install/py_pubsub', 'merge_install': False, 'path': '/home/yoonsik/ros2_workspace/src/py_pubsub', 'symlink_install': False, 'test_result_base': None}
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_srvcli' build argument 'cmake_args' from command line to 'None'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_srvcli' build argument 'cmake_target' from command line to 'None'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_srvcli' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_srvcli' build argument 'cmake_clean_cache' from command line to 'False'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_srvcli' build argument 'cmake_clean_first' from command line to 'False'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_srvcli' build argument 'cmake_force_configure' from command line to 'False'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_srvcli' build argument 'ament_cmake_args' from command line to 'None'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_srvcli' build argument 'catkin_cmake_args' from command line to 'None'
+[0.235s] Level 5:colcon.colcon_core.verb:set package 'py_srvcli' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.235s] DEBUG:colcon.colcon_core.verb:Building package 'py_srvcli' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/yoonsik/ros2_workspace/build/py_srvcli', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/yoonsik/ros2_workspace/install/py_srvcli', 'merge_install': False, 'path': '/home/yoonsik/ros2_workspace/src/py_srvcli', 'symlink_install': False, 'test_result_base': None}
+[0.235s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.236s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.236s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/yoonsik/ros2_workspace/src/action_tutorials_interfaces' with build type 'ament_cmake'
+[0.236s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/yoonsik/ros2_workspace/src/action_tutorials_interfaces'
+[0.238s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.238s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.238s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.240s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/yoonsik/ros2_workspace/src/action_tutorials_py' with build type 'ament_python'
+[0.240s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_py', 'ament_prefix_path')
+[0.240s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/action_tutorials_py/share/action_tutorials_py/hook/ament_prefix_path.ps1'
+[0.241s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/action_tutorials_py/share/action_tutorials_py/hook/ament_prefix_path.dsv'
+[0.242s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/action_tutorials_py/share/action_tutorials_py/hook/ament_prefix_path.sh'
+[0.242s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.242s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.243s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/yoonsik/ros2_workspace/src/lab01' with build type 'ament_python'
+[0.243s] Level 1:colcon.colcon_core.shell:create_environment_hook('lab01', 'ament_prefix_path')
+[0.243s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab01/share/lab01/hook/ament_prefix_path.ps1'
+[0.244s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/lab01/share/lab01/hook/ament_prefix_path.dsv'
+[0.244s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab01/share/lab01/hook/ament_prefix_path.sh'
+[0.244s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.244s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.246s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/yoonsik/ros2_workspace/src/lab02' with build type 'ament_python'
+[0.246s] Level 1:colcon.colcon_core.shell:create_environment_hook('lab02', 'ament_prefix_path')
+[0.246s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/hook/ament_prefix_path.ps1'
+[0.247s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/hook/ament_prefix_path.dsv'
+[0.247s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/hook/ament_prefix_path.sh'
+[0.247s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.247s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.249s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/yoonsik/ros2_workspace/src/lab02_interfaces' with build type 'ament_cmake'
+[0.250s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/yoonsik/ros2_workspace/src/lab02_interfaces'
+[0.250s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.250s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.252s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/yoonsik/ros2_workspace/src/py_pubsub' with build type 'ament_python'
+[0.252s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_pubsub', 'ament_prefix_path')
+[0.252s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/py_pubsub/share/py_pubsub/hook/ament_prefix_path.ps1'
+[0.253s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/py_pubsub/share/py_pubsub/hook/ament_prefix_path.dsv'
+[0.253s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/py_pubsub/share/py_pubsub/hook/ament_prefix_path.sh'
+[0.253s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.253s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.255s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/yoonsik/ros2_workspace/src/py_srvcli' with build type 'ament_python'
+[0.255s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_srvcli', 'ament_prefix_path')
+[0.256s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/py_srvcli/share/py_srvcli/hook/ament_prefix_path.ps1'
+[0.256s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/py_srvcli/share/py_srvcli/hook/ament_prefix_path.dsv'
+[0.256s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/py_srvcli/share/py_srvcli/hook/ament_prefix_path.sh'
+[0.256s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.256s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.262s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yoonsik/ros2_workspace/build/action_tutorials_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/yoonsik/ros2_workspace/build/action_tutorials_interfaces -- -j16 -l16
+[0.387s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/yoonsik/ros2_workspace/src/action_tutorials_py'
+[0.388s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.388s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.506s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/yoonsik/ros2_workspace/src/lab01'
+[0.506s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.506s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.624s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/yoonsik/ros2_workspace/src/lab02'
+[0.624s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.624s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.631s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yoonsik/ros2_workspace/build/lab02_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/yoonsik/ros2_workspace/build/lab02_interfaces -- -j16 -l16
+[0.757s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/yoonsik/ros2_workspace/src/py_pubsub'
+[0.758s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.758s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.767s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yoonsik/ros2_workspace/build/action_tutorials_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/yoonsik/ros2_workspace/build/action_tutorials_interfaces -- -j16 -l16
+[0.779s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yoonsik/ros2_workspace/build/action_tutorials_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/yoonsik/ros2_workspace/build/action_tutorials_interfaces
+[0.900s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/yoonsik/ros2_workspace/src/py_srvcli'
+[0.900s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.900s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.928s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yoonsik/ros2_workspace/build/lab02_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/yoonsik/ros2_workspace/build/lab02_interfaces -- -j16 -l16
+[0.929s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(action_tutorials_interfaces)
+[0.931s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yoonsik/ros2_workspace/build/lab02_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/yoonsik/ros2_workspace/build/lab02_interfaces
+[0.934s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yoonsik/ros2_workspace/build/action_tutorials_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/yoonsik/ros2_workspace/build/action_tutorials_interfaces
+[0.935s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces' for CMake module files
+[0.935s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces' for CMake config files
+[0.936s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_interfaces', 'cmake_prefix_path')
+[0.936s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.ps1'
+[0.936s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.dsv'
+[0.936s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.sh'
+[0.937s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/lib'
+[0.937s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_interfaces', 'ld_library_path_lib')
+[0.937s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.ps1'
+[0.937s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.dsv'
+[0.937s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.sh'
+[0.938s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/bin'
+[0.938s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/lib/pkgconfig/action_tutorials_interfaces.pc'
+[0.941s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/lib/python3.10/site-packages'
+[0.941s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/bin'
+[0.941s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.ps1'
+[0.942s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.dsv'
+[0.942s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.sh'
+[0.942s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.bash'
+[0.943s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.zsh'
+[0.947s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/colcon-core/packages/action_tutorials_interfaces)
+[0.947s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(action_tutorials_interfaces)
+[0.948s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces' for CMake module files
+[0.948s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces' for CMake config files
+[0.948s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_interfaces', 'cmake_prefix_path')
+[0.948s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.ps1'
+[0.949s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.dsv'
+[0.949s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/cmake_prefix_path.sh'
+[0.949s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/lib'
+[0.949s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_interfaces', 'ld_library_path_lib')
+[0.949s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.ps1'
+[0.949s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.dsv'
+[0.949s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/hook/ld_library_path_lib.sh'
+[0.950s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/bin'
+[0.950s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/lib/pkgconfig/action_tutorials_interfaces.pc'
+[0.950s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/lib/python3.10/site-packages'
+[0.950s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/bin'
+[0.950s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.ps1'
+[0.950s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.dsv'
+[0.951s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.sh'
+[0.951s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.bash'
+[0.951s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/action_tutorials_interfaces/package.zsh'
+[0.951s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yoonsik/ros2_workspace/install/action_tutorials_interfaces/share/colcon-core/packages/action_tutorials_interfaces)
+[0.979s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(lab02_interfaces)
+[0.979s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yoonsik/ros2_workspace/build/lab02_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/yoonsik/ros2_workspace/build/lab02_interfaces
+[0.980s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces' for CMake module files
+[0.980s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces' for CMake config files
+[0.981s] Level 1:colcon.colcon_core.shell:create_environment_hook('lab02_interfaces', 'cmake_prefix_path')
+[0.981s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/hook/cmake_prefix_path.ps1'
+[0.981s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/hook/cmake_prefix_path.dsv'
+[0.981s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/hook/cmake_prefix_path.sh'
+[0.982s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces/lib'
+[0.982s] Level 1:colcon.colcon_core.shell:create_environment_hook('lab02_interfaces', 'ld_library_path_lib')
+[0.982s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/hook/ld_library_path_lib.ps1'
+[0.982s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/hook/ld_library_path_lib.dsv'
+[0.982s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/hook/ld_library_path_lib.sh'
+[0.983s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces/bin'
+[0.983s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces/lib/pkgconfig/lab02_interfaces.pc'
+[0.983s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces/lib/python3.10/site-packages'
+[0.983s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces/bin'
+[0.983s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/package.ps1'
+[0.983s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/package.dsv'
+[0.984s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/package.sh'
+[0.984s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/package.bash'
+[0.984s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/package.zsh'
+[0.984s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/colcon-core/packages/lab02_interfaces)
+[0.985s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(lab02_interfaces)
+[0.985s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces' for CMake module files
+[0.985s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces' for CMake config files
+[0.986s] Level 1:colcon.colcon_core.shell:create_environment_hook('lab02_interfaces', 'cmake_prefix_path')
+[0.986s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/hook/cmake_prefix_path.ps1'
+[0.986s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/hook/cmake_prefix_path.dsv'
+[0.986s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/hook/cmake_prefix_path.sh'
+[0.986s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces/lib'
+[0.986s] Level 1:colcon.colcon_core.shell:create_environment_hook('lab02_interfaces', 'ld_library_path_lib')
+[0.987s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/hook/ld_library_path_lib.ps1'
+[0.987s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/hook/ld_library_path_lib.dsv'
+[0.987s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/hook/ld_library_path_lib.sh'
+[0.987s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces/bin'
+[0.987s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces/lib/pkgconfig/lab02_interfaces.pc'
+[0.988s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces/lib/python3.10/site-packages'
+[0.988s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02_interfaces/bin'
+[0.988s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/package.ps1'
+[0.988s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/package.dsv'
+[0.988s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/package.sh'
+[0.989s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/package.bash'
+[0.989s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/lab02_interfaces/package.zsh'
+[0.989s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yoonsik/ros2_workspace/install/lab02_interfaces/share/colcon-core/packages/lab02_interfaces)
+[1.096s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools commands: upload_docs, dist_info, build_scripts, build_ext, alias, install_scripts, rotate, build_clib, install, develop, clean, bdist_dumb, setopt, bdist, install_lib, test, saveopts, build_py, bdist_egg, symlink_data, build, bdist_rpm, register, egg_info, check, install_data, upload, install_egg_info, install_headers, easy_install, sdist
+[1.099s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yoonsik/ros2_workspace/src/py_pubsub': PYTHONPATH=/home/yoonsik/ros2_workspace/build/py_pubsub/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/py_pubsub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_pubsub build --build-base /home/yoonsik/ros2_workspace/build/py_pubsub/build install --record /home/yoonsik/ros2_workspace/build/py_pubsub/install.log --install-scripts $base/lib/py_pubsub --single-version-externally-managed install_data
+[1.101s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools commands: upload_docs, dist_info, build_scripts, build_ext, alias, install_scripts, rotate, build_clib, install, develop, clean, bdist_dumb, setopt, bdist, install_lib, test, saveopts, build_py, bdist_egg, symlink_data, build, bdist_rpm, register, egg_info, check, install_data, upload, install_egg_info, install_headers, easy_install, sdist
+[1.103s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yoonsik/ros2_workspace/src/lab02': PYTHONPATH=/home/yoonsik/ros2_workspace/build/lab02/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/lab02/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/lab02 build --build-base /home/yoonsik/ros2_workspace/build/lab02/build install --record /home/yoonsik/ros2_workspace/build/lab02/install.log --install-scripts $base/lib/lab02 --single-version-externally-managed install_data
+[1.103s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools commands: upload_docs, dist_info, build_scripts, build_ext, alias, install_scripts, rotate, build_clib, install, develop, clean, bdist_dumb, setopt, bdist, install_lib, test, saveopts, build_py, bdist_egg, symlink_data, build, bdist_rpm, register, egg_info, check, install_data, upload, install_egg_info, install_headers, easy_install, sdist
+[1.105s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yoonsik/ros2_workspace/src/action_tutorials_py': PYTHONPATH=/home/yoonsik/ros2_workspace/build/action_tutorials_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/action_tutorials_py build --build-base /home/yoonsik/ros2_workspace/build/action_tutorials_py/build install --record /home/yoonsik/ros2_workspace/build/action_tutorials_py/install.log --install-scripts $base/lib/action_tutorials_py --single-version-externally-managed install_data
+[1.106s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools commands: upload_docs, dist_info, build_scripts, build_ext, alias, install_scripts, rotate, build_clib, install, develop, clean, bdist_dumb, setopt, bdist, install_lib, test, saveopts, build_py, bdist_egg, symlink_data, build, bdist_rpm, register, egg_info, check, install_data, upload, install_egg_info, install_headers, easy_install, sdist
+[1.109s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yoonsik/ros2_workspace/src/lab01': PYTHONPATH=/home/yoonsik/ros2_workspace/build/lab01/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/lab01/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/lab01 build --build-base /home/yoonsik/ros2_workspace/build/lab01/build install --record /home/yoonsik/ros2_workspace/build/lab01/install.log --install-scripts $base/lib/lab01 --single-version-externally-managed install_data
+[1.110s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools commands: upload_docs, dist_info, build_scripts, build_ext, alias, install_scripts, rotate, build_clib, install, develop, clean, bdist_dumb, setopt, bdist, install_lib, test, saveopts, build_py, bdist_egg, symlink_data, build, bdist_rpm, register, egg_info, check, install_data, upload, install_egg_info, install_headers, easy_install, sdist
+[1.112s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yoonsik/ros2_workspace/src/py_srvcli': PYTHONPATH=/home/yoonsik/ros2_workspace/build/py_srvcli/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/py_srvcli/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_srvcli build --build-base /home/yoonsik/ros2_workspace/build/py_srvcli/build install --record /home/yoonsik/ros2_workspace/build/py_srvcli/install.log --install-scripts $base/lib/py_srvcli --single-version-externally-managed install_data
+[1.291s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab01' for CMake module files
+[1.292s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yoonsik/ros2_workspace/src/lab01' returned '0': PYTHONPATH=/home/yoonsik/ros2_workspace/build/lab01/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/lab01/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/lab01 build --build-base /home/yoonsik/ros2_workspace/build/lab01/build install --record /home/yoonsik/ros2_workspace/build/lab01/install.log --install-scripts $base/lib/lab01 --single-version-externally-managed install_data
+[1.292s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab01' for CMake config files
+[1.293s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab01/lib'
+[1.293s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab01/bin'
+[1.293s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab01/lib/pkgconfig/lab01.pc'
+[1.293s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab01/lib/python3.10/site-packages'
+[1.294s] Level 1:colcon.colcon_core.shell:create_environment_hook('lab01', 'pythonpath')
+[1.294s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab01/share/lab01/hook/pythonpath.ps1'
+[1.294s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/lab01/share/lab01/hook/pythonpath.dsv'
+[1.294s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab01/share/lab01/hook/pythonpath.sh'
+[1.295s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab01/bin'
+[1.295s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(lab01)
+[1.295s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab01/share/lab01/package.ps1'
+[1.296s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yoonsik/ros2_workspace/install/lab01/share/lab01/package.dsv'
+[1.296s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab01/share/lab01/package.sh'
+[1.297s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab01/share/lab01/package.bash'
+[1.297s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab01/share/lab01/package.zsh'
+[1.297s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yoonsik/ros2_workspace/install/lab01/share/colcon-core/packages/lab01)
+[1.299s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02' for CMake module files
+[1.299s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yoonsik/ros2_workspace/src/lab02' returned '0': PYTHONPATH=/home/yoonsik/ros2_workspace/build/lab02/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/lab02/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/lab02 build --build-base /home/yoonsik/ros2_workspace/build/lab02/build install --record /home/yoonsik/ros2_workspace/build/lab02/install.log --install-scripts $base/lib/lab02 --single-version-externally-managed install_data
+[1.300s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02' for CMake config files
+[1.303s] Level 1:colcon.colcon_core.shell:create_environment_hook('lab02', 'cmake_prefix_path')
+[1.303s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/hook/cmake_prefix_path.ps1'
+[1.304s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/hook/cmake_prefix_path.dsv'
+[1.304s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/hook/cmake_prefix_path.sh'
+[1.305s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02/lib'
+[1.305s] Level 1:colcon.colcon_core.shell:create_environment_hook('lab02', 'ld_library_path_lib')
+[1.305s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/hook/ld_library_path_lib.ps1'
+[1.305s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/hook/ld_library_path_lib.dsv'
+[1.305s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/hook/ld_library_path_lib.sh'
+[1.306s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02/bin'
+[1.306s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02/lib/pkgconfig/lab02.pc'
+[1.306s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02/lib/python3.10/site-packages'
+[1.306s] Level 1:colcon.colcon_core.shell:create_environment_hook('lab02', 'pythonpath')
+[1.306s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/hook/pythonpath.ps1'
+[1.307s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/hook/pythonpath.dsv'
+[1.307s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/hook/pythonpath.sh'
+[1.307s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/lab02/bin'
+[1.307s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(lab02)
+[1.308s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/package.ps1'
+[1.308s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/package.dsv'
+[1.309s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/package.sh'
+[1.309s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/package.bash'
+[1.309s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/lab02/share/lab02/package.zsh'
+[1.310s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yoonsik/ros2_workspace/install/lab02/share/colcon-core/packages/lab02)
+[1.310s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_pubsub' for CMake module files
+[1.311s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yoonsik/ros2_workspace/src/py_pubsub' returned '0': PYTHONPATH=/home/yoonsik/ros2_workspace/build/py_pubsub/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/py_pubsub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_pubsub build --build-base /home/yoonsik/ros2_workspace/build/py_pubsub/build install --record /home/yoonsik/ros2_workspace/build/py_pubsub/install.log --install-scripts $base/lib/py_pubsub --single-version-externally-managed install_data
+[1.311s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_pubsub' for CMake config files
+[1.312s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_pubsub/lib'
+[1.312s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_pubsub/bin'
+[1.312s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_pubsub/lib/pkgconfig/py_pubsub.pc'
+[1.312s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_pubsub/lib/python3.10/site-packages'
+[1.312s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_pubsub', 'pythonpath')
+[1.312s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/py_pubsub/share/py_pubsub/hook/pythonpath.ps1'
+[1.313s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/py_pubsub/share/py_pubsub/hook/pythonpath.dsv'
+[1.313s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/py_pubsub/share/py_pubsub/hook/pythonpath.sh'
+[1.314s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_pubsub/bin'
+[1.314s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(py_pubsub)
+[1.314s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/py_pubsub/share/py_pubsub/package.ps1'
+[1.314s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yoonsik/ros2_workspace/install/py_pubsub/share/py_pubsub/package.dsv'
+[1.315s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/py_pubsub/share/py_pubsub/package.sh'
+[1.315s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/py_pubsub/share/py_pubsub/package.bash'
+[1.315s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/py_pubsub/share/py_pubsub/package.zsh'
+[1.315s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yoonsik/ros2_workspace/install/py_pubsub/share/colcon-core/packages/py_pubsub)
+[1.316s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_py' for CMake module files
+[1.316s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yoonsik/ros2_workspace/src/action_tutorials_py' returned '0': PYTHONPATH=/home/yoonsik/ros2_workspace/build/action_tutorials_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/action_tutorials_py build --build-base /home/yoonsik/ros2_workspace/build/action_tutorials_py/build install --record /home/yoonsik/ros2_workspace/build/action_tutorials_py/install.log --install-scripts $base/lib/action_tutorials_py --single-version-externally-managed install_data
+[1.316s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_py' for CMake config files
+[1.317s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_py/lib'
+[1.317s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_py/bin'
+[1.317s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/pkgconfig/action_tutorials_py.pc'
+[1.317s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages'
+[1.317s] Level 1:colcon.colcon_core.shell:create_environment_hook('action_tutorials_py', 'pythonpath')
+[1.318s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/action_tutorials_py/share/action_tutorials_py/hook/pythonpath.ps1'
+[1.318s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/action_tutorials_py/share/action_tutorials_py/hook/pythonpath.dsv'
+[1.318s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/action_tutorials_py/share/action_tutorials_py/hook/pythonpath.sh'
+[1.319s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/action_tutorials_py/bin'
+[1.319s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(action_tutorials_py)
+[1.319s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/action_tutorials_py/share/action_tutorials_py/package.ps1'
+[1.320s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yoonsik/ros2_workspace/install/action_tutorials_py/share/action_tutorials_py/package.dsv'
+[1.320s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/action_tutorials_py/share/action_tutorials_py/package.sh'
+[1.320s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/action_tutorials_py/share/action_tutorials_py/package.bash'
+[1.320s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/action_tutorials_py/share/action_tutorials_py/package.zsh'
+[1.321s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yoonsik/ros2_workspace/install/action_tutorials_py/share/colcon-core/packages/action_tutorials_py)
+[1.322s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_srvcli' for CMake module files
+[1.322s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yoonsik/ros2_workspace/src/py_srvcli' returned '0': PYTHONPATH=/home/yoonsik/ros2_workspace/build/py_srvcli/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/py_srvcli/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_srvcli build --build-base /home/yoonsik/ros2_workspace/build/py_srvcli/build install --record /home/yoonsik/ros2_workspace/build/py_srvcli/install.log --install-scripts $base/lib/py_srvcli --single-version-externally-managed install_data
+[1.322s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_srvcli' for CMake config files
+[1.323s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_srvcli/lib'
+[1.323s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_srvcli/bin'
+[1.323s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_srvcli/lib/pkgconfig/py_srvcli.pc'
+[1.323s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_srvcli/lib/python3.10/site-packages'
+[1.323s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_srvcli', 'pythonpath')
+[1.324s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/py_srvcli/share/py_srvcli/hook/pythonpath.ps1'
+[1.324s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yoonsik/ros2_workspace/install/py_srvcli/share/py_srvcli/hook/pythonpath.dsv'
+[1.324s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yoonsik/ros2_workspace/install/py_srvcli/share/py_srvcli/hook/pythonpath.sh'
+[1.325s] Level 1:colcon.colcon_core.environment:checking '/home/yoonsik/ros2_workspace/install/py_srvcli/bin'
+[1.325s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(py_srvcli)
+[1.325s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/py_srvcli/share/py_srvcli/package.ps1'
+[1.325s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yoonsik/ros2_workspace/install/py_srvcli/share/py_srvcli/package.dsv'
+[1.326s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/py_srvcli/share/py_srvcli/package.sh'
+[1.326s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/py_srvcli/share/py_srvcli/package.bash'
+[1.326s] INFO:colcon.colcon_core.shell:Creating package script '/home/yoonsik/ros2_workspace/install/py_srvcli/share/py_srvcli/package.zsh'
+[1.327s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yoonsik/ros2_workspace/install/py_srvcli/share/colcon-core/packages/py_srvcli)
+[1.327s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.327s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.327s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.327s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.333s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.333s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.333s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.355s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.355s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/yoonsik/ros2_workspace/install/local_setup.ps1'
+[1.357s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/yoonsik/ros2_workspace/install/_local_setup_util_ps1.py'
+[1.358s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/yoonsik/ros2_workspace/install/setup.ps1'
+[1.359s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/yoonsik/ros2_workspace/install/local_setup.sh'
+[1.359s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/yoonsik/ros2_workspace/install/_local_setup_util_sh.py'
+[1.360s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/yoonsik/ros2_workspace/install/setup.sh'
+[1.363s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/yoonsik/ros2_workspace/install/local_setup.bash'
+[1.363s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/yoonsik/ros2_workspace/install/setup.bash'
+[1.364s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/yoonsik/ros2_workspace/install/local_setup.zsh'
+[1.364s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/yoonsik/ros2_workspace/install/setup.zsh'

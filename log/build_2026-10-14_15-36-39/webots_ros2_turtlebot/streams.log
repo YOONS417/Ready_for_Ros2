@@ -1,0 +1,47 @@
+[0.364s] Invoking command in '/home/yoonsik/ros2_workspace/webots_ros2_ws/src/webots_ros2/webots_ros2_turtlebot': AMENT_PREFIX_PATH=/home/yoonsik/ros2_workspace/install/webots_ros2_control:/home/yoonsik/ros2_workspace/install/webots_ros2_driver:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/yoonsik/ros2_workspace/install/webots_ros2_control:/home/yoonsik/ros2_workspace/install/webots_ros2_driver:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/home/yoonsik/ros2_workspace/install/webots_ros2_control/lib:/home/yoonsik/ros2_workspace/install/webots_ros2_driver/lib:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/lib/python3.10/site-packages:/home/yoonsik/ros2_workspace/install/webots_ros2_driver/local/lib/python3.10/dist-packages:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../build/webots_ros2_turtlebot build --build-base /home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/build install --record /home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/install.log --install-scripts $base/lib/webots_ros2_turtlebot --single-version-externally-managed install_data
+[0.486s] running egg_info
+[0.486s] creating ../../../../build/webots_ros2_turtlebot/webots_ros2_turtlebot.egg-info
+[0.486s] writing ../../../../build/webots_ros2_turtlebot/webots_ros2_turtlebot.egg-info/PKG-INFO
+[0.486s] writing dependency_links to ../../../../build/webots_ros2_turtlebot/webots_ros2_turtlebot.egg-info/dependency_links.txt
+[0.486s] writing entry points to ../../../../build/webots_ros2_turtlebot/webots_ros2_turtlebot.egg-info/entry_points.txt
+[0.486s] writing requirements to ../../../../build/webots_ros2_turtlebot/webots_ros2_turtlebot.egg-info/requires.txt
+[0.486s] writing top-level names to ../../../../build/webots_ros2_turtlebot/webots_ros2_turtlebot.egg-info/top_level.txt
+[0.486s] writing manifest file '../../../../build/webots_ros2_turtlebot/webots_ros2_turtlebot.egg-info/SOURCES.txt'
+[0.496s] reading manifest file '../../../../build/webots_ros2_turtlebot/webots_ros2_turtlebot.egg-info/SOURCES.txt'
+[0.496s] writing manifest file '../../../../build/webots_ros2_turtlebot/webots_ros2_turtlebot.egg-info/SOURCES.txt'
+[0.496s] running build
+[0.496s] running build_py
+[0.496s] creating /home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/build
+[0.496s] creating /home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/build/lib
+[0.496s] creating /home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/build/lib/webots_ros2_turtlebot
+[0.496s] copying webots_ros2_turtlebot/__init__.py -> /home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/build/lib/webots_ros2_turtlebot
+[0.496s] copying webots_ros2_turtlebot/plugin_example.py -> /home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/build/lib/webots_ros2_turtlebot
+[0.497s] running install
+[0.498s] running install_lib
+[0.498s] creating /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/lib/python3.10/site-packages/webots_ros2_turtlebot
+[0.498s] copying /home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/build/lib/webots_ros2_turtlebot/__init__.py -> /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/lib/python3.10/site-packages/webots_ros2_turtlebot
+[0.498s] copying /home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/build/lib/webots_ros2_turtlebot/plugin_example.py -> /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/lib/python3.10/site-packages/webots_ros2_turtlebot
+[0.498s] byte-compiling /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/lib/python3.10/site-packages/webots_ros2_turtlebot/__init__.py to __init__.cpython-310.pyc
+[0.498s] byte-compiling /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/lib/python3.10/site-packages/webots_ros2_turtlebot/plugin_example.py to plugin_example.cpython-310.pyc
+[0.498s] running install_data
+[0.498s] creating /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/ament_index
+[0.498s] creating /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/ament_index/resource_index
+[0.498s] creating /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/ament_index/resource_index/packages
+[0.498s] copying resource/webots_ros2_turtlebot -> /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/ament_index/resource_index/packages
+[0.498s] creating /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/launch
+[0.498s] copying launch/robot_launch.py -> /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/launch
+[0.498s] creating /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/resource
+[0.498s] copying resource/turtlebot3_burger_example_map.pgm -> /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/resource
+[0.498s] copying resource/turtlebot3_burger_example_map.yaml -> /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/resource
+[0.498s] copying resource/turtlebot_webots.urdf -> /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/resource
+[0.499s] copying resource/ros2control.yml -> /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/resource
+[0.499s] copying resource/nav2_params.yaml -> /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/resource
+[0.499s] creating /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/worlds
+[0.499s] copying worlds/turtlebot3_burger_example.wbt -> /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/worlds
+[0.499s] copying worlds/.turtlebot3_burger_example.wbproj -> /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/worlds
+[0.501s] copying package.xml -> /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot
+[0.501s] running install_egg_info
+[0.501s] Copying ../../../../build/webots_ros2_turtlebot/webots_ros2_turtlebot.egg-info to /home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/lib/python3.10/site-packages/webots_ros2_turtlebot-2025.0.1-py3.10.egg-info
+[0.501s] running install_scripts
+[0.509s] writing list of installed files to '/home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/install.log'
+[0.521s] Invoked command in '/home/yoonsik/ros2_workspace/webots_ros2_ws/src/webots_ros2/webots_ros2_turtlebot' returned '0': AMENT_PREFIX_PATH=/home/yoonsik/ros2_workspace/install/webots_ros2_control:/home/yoonsik/ros2_workspace/install/webots_ros2_driver:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/yoonsik/ros2_workspace/install/webots_ros2_control:/home/yoonsik/ros2_workspace/install/webots_ros2_driver:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/home/yoonsik/ros2_workspace/install/webots_ros2_control/lib:/home/yoonsik/ros2_workspace/install/webots_ros2_driver/lib:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/lib/python3.10/site-packages:/home/yoonsik/ros2_workspace/install/webots_ros2_driver/local/lib/python3.10/dist-packages:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../build/webots_ros2_turtlebot build --build-base /home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/build install --record /home/yoonsik/ros2_workspace/build/webots_ros2_turtlebot/install.log --install-scripts $base/lib/webots_ros2_turtlebot --single-version-externally-managed install_data

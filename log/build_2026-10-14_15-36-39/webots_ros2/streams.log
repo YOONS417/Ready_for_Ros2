@@ -1,0 +1,32 @@
+[0.357s] Invoking command in '/home/yoonsik/ros2_workspace/webots_ros2_ws/src/webots_ros2/webots_ros2': AMENT_PREFIX_PATH=/home/yoonsik/ros2_workspace/install/webots_ros2_tests:/home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot:/home/yoonsik/ros2_workspace/install/webots_ros2_control:/home/yoonsik/ros2_workspace/install/webots_ros2_driver:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/yoonsik/ros2_workspace/install/webots_ros2_control:/home/yoonsik/ros2_workspace/install/webots_ros2_driver:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/home/yoonsik/ros2_workspace/install/webots_ros2_control/lib:/home/yoonsik/ros2_workspace/install/webots_ros2_driver/lib:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/yoonsik/ros2_workspace/build/webots_ros2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/webots_ros2/lib/python3.10/site-packages:/home/yoonsik/ros2_workspace/install/webots_ros2_tests/lib/python3.10/site-packages:/home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/lib/python3.10/site-packages:/home/yoonsik/ros2_workspace/install/webots_ros2_driver/local/lib/python3.10/dist-packages:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../build/webots_ros2 build --build-base /home/yoonsik/ros2_workspace/build/webots_ros2/build install --record /home/yoonsik/ros2_workspace/build/webots_ros2/install.log --install-scripts $base/lib/webots_ros2 --single-version-externally-managed install_data
+[0.490s] running egg_info
+[0.490s] creating ../../../../build/webots_ros2/webots_ros2.egg-info
+[0.490s] writing ../../../../build/webots_ros2/webots_ros2.egg-info/PKG-INFO
+[0.490s] writing dependency_links to ../../../../build/webots_ros2/webots_ros2.egg-info/dependency_links.txt
+[0.490s] writing requirements to ../../../../build/webots_ros2/webots_ros2.egg-info/requires.txt
+[0.490s] writing top-level names to ../../../../build/webots_ros2/webots_ros2.egg-info/top_level.txt
+[0.490s] writing manifest file '../../../../build/webots_ros2/webots_ros2.egg-info/SOURCES.txt'
+[0.500s] reading manifest file '../../../../build/webots_ros2/webots_ros2.egg-info/SOURCES.txt'
+[0.500s] writing manifest file '../../../../build/webots_ros2/webots_ros2.egg-info/SOURCES.txt'
+[0.500s] running build
+[0.500s] running build_py
+[0.500s] creating /home/yoonsik/ros2_workspace/build/webots_ros2/build
+[0.501s] creating /home/yoonsik/ros2_workspace/build/webots_ros2/build/lib
+[0.501s] creating /home/yoonsik/ros2_workspace/build/webots_ros2/build/lib/webots_ros2
+[0.501s] copying webots_ros2/__init__.py -> /home/yoonsik/ros2_workspace/build/webots_ros2/build/lib/webots_ros2
+[0.501s] running install
+[0.501s] running install_lib
+[0.501s] creating /home/yoonsik/ros2_workspace/install/webots_ros2/lib/python3.10/site-packages/webots_ros2
+[0.501s] copying /home/yoonsik/ros2_workspace/build/webots_ros2/build/lib/webots_ros2/__init__.py -> /home/yoonsik/ros2_workspace/install/webots_ros2/lib/python3.10/site-packages/webots_ros2
+[0.504s] byte-compiling /home/yoonsik/ros2_workspace/install/webots_ros2/lib/python3.10/site-packages/webots_ros2/__init__.py to __init__.cpython-310.pyc
+[0.504s] running install_data
+[0.504s] copying package.xml -> /home/yoonsik/ros2_workspace/install/webots_ros2/share/webots_ros2
+[0.504s] creating /home/yoonsik/ros2_workspace/install/webots_ros2/share/ament_index
+[0.504s] creating /home/yoonsik/ros2_workspace/install/webots_ros2/share/ament_index/resource_index
+[0.504s] creating /home/yoonsik/ros2_workspace/install/webots_ros2/share/ament_index/resource_index/packages
+[0.504s] copying resource/webots_ros2 -> /home/yoonsik/ros2_workspace/install/webots_ros2/share/ament_index/resource_index/packages
+[0.504s] running install_egg_info
+[0.504s] Copying ../../../../build/webots_ros2/webots_ros2.egg-info to /home/yoonsik/ros2_workspace/install/webots_ros2/lib/python3.10/site-packages/webots_ros2-2025.0.1-py3.10.egg-info
+[0.504s] running install_scripts
+[0.513s] writing list of installed files to '/home/yoonsik/ros2_workspace/build/webots_ros2/install.log'
+[0.524s] Invoked command in '/home/yoonsik/ros2_workspace/webots_ros2_ws/src/webots_ros2/webots_ros2' returned '0': AMENT_PREFIX_PATH=/home/yoonsik/ros2_workspace/install/webots_ros2_tests:/home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot:/home/yoonsik/ros2_workspace/install/webots_ros2_control:/home/yoonsik/ros2_workspace/install/webots_ros2_driver:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/yoonsik/ros2_workspace/install/webots_ros2_control:/home/yoonsik/ros2_workspace/install/webots_ros2_driver:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/home/yoonsik/ros2_workspace/install/webots_ros2_control/lib:/home/yoonsik/ros2_workspace/install/webots_ros2_driver/lib:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/yoonsik/ros2_workspace/build/webots_ros2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/webots_ros2/lib/python3.10/site-packages:/home/yoonsik/ros2_workspace/install/webots_ros2_tests/lib/python3.10/site-packages:/home/yoonsik/ros2_workspace/install/webots_ros2_turtlebot/lib/python3.10/site-packages:/home/yoonsik/ros2_workspace/install/webots_ros2_driver/local/lib/python3.10/dist-packages:/home/yoonsik/ros2_workspace/install/webots_ros2_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../build/webots_ros2 build --build-base /home/yoonsik/ros2_workspace/build/webots_ros2/build install --record /home/yoonsik/ros2_workspace/build/webots_ros2/install.log --install-scripts $base/lib/webots_ros2 --single-version-externally-managed install_data

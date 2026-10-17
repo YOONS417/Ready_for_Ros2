@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <node pkg="turtlesim" exec="turtlesim_node" name="sim" namespace="turtlesim1" />
+  <node pkg="turtlesim" exec="turtlesim_node" name="sim" namespace="turtlesim2" />
+  <node pkg="turtlesim" exec="mimic" name="mimic">
+    <remap from="/input/pose" to="/turtlesim1/turtle1/pose" />
+    <remap from="/output/cmd_vel" to="/turtlesim2/turtle1/cmd_vel" />
+  </node>
+</launch>x`
+
+#ros2 run turtlesim turtlesim_node 실행,  
+#단, node명을 /turtlesim1/sim 으로 설정, 단, node명을 /turtlesim2/sim 으로 설정
+#즉, mimic node가 turtlesim1 의 pose를 받아서, 다시 turtlesim2에게 cmd_vel로 입력하고 있음

@@ -1,0 +1,26 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from lab02/action/ChaseTurtle.action
+// generated code does not contain a copyright notice
+
+
+module lab02 {
+  module action {
+    @verbatim (language="comment", text=
+      "Goal")
+    struct ChaseTurtle_Goal {
+      float max_time_to_travel;
+    };
+    @verbatim (language="comment", text=
+      "Result")
+    struct ChaseTurtle_Result {
+      boolean caught;
+    };
+    @verbatim (language="comment", text=
+      "Feedback")
+    struct ChaseTurtle_Feedback {
+      float distance_to_turtle1;
+
+      float time_travelled;
+    };
+  };
+};

@@ -1,0 +1,41 @@
+[0.743s] Invoking command in '/home/yoonsik/ros2_workspace/src/action_tutorials_py': PYTHONPATH=/home/yoonsik/ros2_workspace/build/action_tutorials_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/action_tutorials_py build --build-base /home/yoonsik/ros2_workspace/build/action_tutorials_py/build install --record /home/yoonsik/ros2_workspace/build/action_tutorials_py/install.log --install-scripts $base/lib/action_tutorials_py --single-version-externally-managed install_data
+[0.954s] running egg_info
+[0.954s] creating ../../build/action_tutorials_py/action_tutorials_py.egg-info
+[0.954s] writing ../../build/action_tutorials_py/action_tutorials_py.egg-info/PKG-INFO
+[0.954s] writing dependency_links to ../../build/action_tutorials_py/action_tutorials_py.egg-info/dependency_links.txt
+[0.954s] writing entry points to ../../build/action_tutorials_py/action_tutorials_py.egg-info/entry_points.txt
+[0.955s] writing requirements to ../../build/action_tutorials_py/action_tutorials_py.egg-info/requires.txt
+[0.955s] writing top-level names to ../../build/action_tutorials_py/action_tutorials_py.egg-info/top_level.txt
+[0.955s] writing manifest file '../../build/action_tutorials_py/action_tutorials_py.egg-info/SOURCES.txt'
+[0.956s] reading manifest file '../../build/action_tutorials_py/action_tutorials_py.egg-info/SOURCES.txt'
+[0.958s] writing manifest file '../../build/action_tutorials_py/action_tutorials_py.egg-info/SOURCES.txt'
+[0.958s] running build
+[0.958s] running build_py
+[0.961s] creating /home/yoonsik/ros2_workspace/build/action_tutorials_py/build
+[0.961s] creating /home/yoonsik/ros2_workspace/build/action_tutorials_py/build/lib
+[0.961s] creating /home/yoonsik/ros2_workspace/build/action_tutorials_py/build/lib/action_tutorials_py
+[0.961s] copying action_tutorials_py/__init__.py -> /home/yoonsik/ros2_workspace/build/action_tutorials_py/build/lib/action_tutorials_py
+[0.961s] copying action_tutorials_py/fibonacci_action_server.py -> /home/yoonsik/ros2_workspace/build/action_tutorials_py/build/lib/action_tutorials_py
+[0.961s] copying action_tutorials_py/fibonacci_action_client.py -> /home/yoonsik/ros2_workspace/build/action_tutorials_py/build/lib/action_tutorials_py
+[0.961s] running install
+[0.961s] running install_lib
+[0.961s] creating /home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages/action_tutorials_py
+[0.961s] copying /home/yoonsik/ros2_workspace/build/action_tutorials_py/build/lib/action_tutorials_py/__init__.py -> /home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages/action_tutorials_py
+[0.961s] copying /home/yoonsik/ros2_workspace/build/action_tutorials_py/build/lib/action_tutorials_py/fibonacci_action_server.py -> /home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages/action_tutorials_py
+[0.961s] copying /home/yoonsik/ros2_workspace/build/action_tutorials_py/build/lib/action_tutorials_py/fibonacci_action_client.py -> /home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages/action_tutorials_py
+[0.961s] byte-compiling /home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages/action_tutorials_py/__init__.py to __init__.cpython-310.pyc
+[0.962s] byte-compiling /home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages/action_tutorials_py/fibonacci_action_server.py to fibonacci_action_server.cpython-310.pyc
+[0.963s] byte-compiling /home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages/action_tutorials_py/fibonacci_action_client.py to fibonacci_action_client.cpython-310.pyc
+[0.963s] running install_data
+[0.963s] creating /home/yoonsik/ros2_workspace/install/action_tutorials_py/share/ament_index
+[0.963s] creating /home/yoonsik/ros2_workspace/install/action_tutorials_py/share/ament_index/resource_index
+[0.963s] creating /home/yoonsik/ros2_workspace/install/action_tutorials_py/share/ament_index/resource_index/packages
+[0.963s] copying resource/action_tutorials_py -> /home/yoonsik/ros2_workspace/install/action_tutorials_py/share/ament_index/resource_index/packages
+[0.963s] copying package.xml -> /home/yoonsik/ros2_workspace/install/action_tutorials_py/share/action_tutorials_py
+[0.963s] running install_egg_info
+[0.963s] Copying ../../build/action_tutorials_py/action_tutorials_py.egg-info to /home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages/action_tutorials_py-0.0.0-py3.10.egg-info
+[0.964s] running install_scripts
+[0.984s] Installing fibonacci_action_client script to /home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/action_tutorials_py
+[0.984s] Installing fibonacci_action_server script to /home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/action_tutorials_py
+[0.984s] writing list of installed files to '/home/yoonsik/ros2_workspace/build/action_tutorials_py/install.log'
+[1.025s] Invoked command in '/home/yoonsik/ros2_workspace/src/action_tutorials_py' returned '0': PYTHONPATH=/home/yoonsik/ros2_workspace/build/action_tutorials_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/action_tutorials_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/action_tutorials_py build --build-base /home/yoonsik/ros2_workspace/build/action_tutorials_py/build install --record /home/yoonsik/ros2_workspace/build/action_tutorials_py/install.log --install-scripts $base/lib/action_tutorials_py --single-version-externally-managed install_data

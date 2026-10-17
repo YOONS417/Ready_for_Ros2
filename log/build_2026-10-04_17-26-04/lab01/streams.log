@@ -1,0 +1,22 @@
+[0.542s] Invoking command in '/home/yoonsik/ros2_workspace/src/lab01': PYTHONPATH=/home/yoonsik/ros2_workspace/build/lab01/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/lab01/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/lab01 build --build-base /home/yoonsik/ros2_workspace/build/lab01/build install --record /home/yoonsik/ros2_workspace/build/lab01/install.log --install-scripts $base/lib/lab01 --single-version-externally-managed install_data
+[0.660s] running egg_info
+[0.661s] writing ../../build/lab01/lab01.egg-info/PKG-INFO
+[0.661s] writing dependency_links to ../../build/lab01/lab01.egg-info/dependency_links.txt
+[0.661s] writing entry points to ../../build/lab01/lab01.egg-info/entry_points.txt
+[0.661s] writing requirements to ../../build/lab01/lab01.egg-info/requires.txt
+[0.661s] writing top-level names to ../../build/lab01/lab01.egg-info/top_level.txt
+[0.662s] reading manifest file '../../build/lab01/lab01.egg-info/SOURCES.txt'
+[0.662s] adding license file 'LICENSE'
+[0.662s] writing manifest file '../../build/lab01/lab01.egg-info/SOURCES.txt'
+[0.662s] running build
+[0.662s] running build_py
+[0.663s] running install
+[0.663s] running install_lib
+[0.663s] running install_data
+[0.664s] running install_egg_info
+[0.665s] removing '/home/yoonsik/ros2_workspace/install/lab01/lib/python3.10/site-packages/lab01-0.0.0-py3.10.egg-info' (and everything under it)
+[0.665s] Copying ../../build/lab01/lab01.egg-info to /home/yoonsik/ros2_workspace/install/lab01/lib/python3.10/site-packages/lab01-0.0.0-py3.10.egg-info
+[0.666s] running install_scripts
+[0.677s] Installing catch_turtle script to /home/yoonsik/ros2_workspace/install/lab01/lib/lab01
+[0.677s] writing list of installed files to '/home/yoonsik/ros2_workspace/build/lab01/install.log'
+[0.695s] Invoked command in '/home/yoonsik/ros2_workspace/src/lab01' returned '0': PYTHONPATH=/home/yoonsik/ros2_workspace/build/lab01/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/install/lab01/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/lab01 build --build-base /home/yoonsik/ros2_workspace/build/lab01/build install --record /home/yoonsik/ros2_workspace/build/lab01/install.log --install-scripts $base/lib/lab01 --single-version-externally-managed install_data
