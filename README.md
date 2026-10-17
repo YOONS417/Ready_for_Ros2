@@ -2,7 +2,7 @@
 temporary repository for testing
 
 
-# 🚀 팀 프로젝트 GitHub 사용 가이드 (초보자용)
+# 🚀 팀 프로젝트 GitHub 사용 가이드
 
 본 레포지토리는 팀원들이 함께 작업하는 공간입니다. 아래 안내에 따라 환경 설정 및 소스코드 변경 사항을 올려주세요!
 
