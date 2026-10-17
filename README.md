@@ -13,9 +13,9 @@ temporary repository for testing
 ### 사용자 정보 등록
 터미널(Terminal) 또는 Git Bash를 열고 아래 명령어를 입력하여 본인의 정보를 등록합니다.
 
-git config --global user.name "본인의 GitHub 이름"
+ git config --global user.name "본인의 GitHub 이름"
 
-git config --global user.email "본인의 GitHub 이메일"
+ git config --global user.email "본인의 GitHub 이메일"
 
 
 ### 작업할 로컬 폴더로 이동한 후 아래 명령어로 원격 저장소를 내 컴퓨터로 복사
@@ -27,25 +27,26 @@ cd Ready_for_Ros2
 
 # 1단계: 최신 코드 불러오기 (작업 시작 전 필수!)
 다른 팀원이 올려둔 코드가 있을 수 있으므로 작업 전 항상 최신 상태로 업데이트
+ git pull origin main
 
 
 
 # 2단계: 변경된 파일 올릴 준비하기 (Git Add)
 수정한 파일들을 커밋할 대상으로 등록합니다.
 ### 전체 변경 사항 등록
-git add .
+ git add .
 
 ### 또는 특정 파일만 등록시
-git add 파일이름
+ git add 파일이름
 
 
 
 # 3단계: 변경 사항 기록하기 (Git Commit)
 어떤 작업을 했는지 알 수 있도록 메시지와 함께 저장합니다.
-git commit -m "feat: 로그인 기능 추가"
+ git commit -m "feat: 로그인 기능 추가"
 
 
 
 # 4단계: GitHub에 반영하기 (Git Push)
 작성한 커밋을 원격 저장소로 올려 팀원들과 공유합니다.
-git push origin main
+ git push origin main
