@@ -19,6 +19,7 @@ temporary repository for testing
 
 
 ### 작업할 로컬 폴더로 이동한 후 아래 명령어로 원격 저장소를 내 컴퓨터로 복사
+
  git clone https://github.com/YOONS417/Ready_for_Ros2.git
 
  cd Ready_for_Ros2
@@ -33,20 +34,22 @@ temporary repository for testing
 
 # 2단계: 변경된 파일 올릴 준비하기 (Git Add)
 수정한 파일들을 커밋할 대상으로 등록합니다.
-### 전체 변경 사항 등록
+#### 전체 변경 사항 등록
  git add .
 
-### 또는 특정 파일만 등록시
+#### 또는 특정 파일만 등록시
  git add 파일이름
 
 
 
 # 3단계: 변경 사항 기록하기 (Git Commit)
 어떤 작업을 했는지 알 수 있도록 메시지와 함께 저장합니다.
+
  git commit -m "feat: 로그인 기능 추가"
 
 
 
 # 4단계: GitHub에 반영하기 (Git Push)
 작성한 커밋을 원격 저장소로 올려 팀원들과 공유합니다.
+
  git push origin main
