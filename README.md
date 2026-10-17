@@ -30,7 +30,6 @@ cd Ready_for_Ros2
  git pull origin main
 
 
-
 # 2단계: 변경된 파일 올릴 준비하기 (Git Add)
 수정한 파일들을 커밋할 대상으로 등록합니다.
 ### 전체 변경 사항 등록
