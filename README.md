@@ -18,6 +18,7 @@ git config --global user.email "본인의 GitHub 이메일"
 
 ### 작업할 로컬 폴더로 이동한 후 아래 명령어로 원격 저장소를 내 컴퓨터로 복사
 git clone [https://github.com/소유자ID/레포지토리이름.git](https://github.com/소유자ID/레포지토리이름.git)
+
 cd 레포지토리이름
 
 
