@@ -58,23 +58,27 @@ temporary repository for testing
 
 # 팀과제 실행 방법
 
-### 1번 터미널 : webots + RViz 실행
+## 1번 터미널 : webots + RViz 실행
   cd 임시폴더/Ready_for_ros2/webots_ros2_ws
   
   colcon build
   
   source install/local_setup.bash
+
+  cd 임시폴더/Ready_for_ros2/webots_ros2_ws/src/py_bt_ros
   
   ros2 launch webots_ros2_turtlebot robot_launch.py nav:=true
 
   RViz에서 2D Goal Pose + Tool Properties추가
   
   Topic name에서 /bt/goal_pose로 변경
+  
 
-### 2번 터미널 : 카메라 활성화
+## 2번 터미널 : 카메라 활성화
 
   ros2 topic echo /TurtleBot3Burger/front_camera/image_color
+  
 
-### 3번 터미널 : 변경괴 bt_node 실행
+## 3번 터미널 : 변경괴 bt_node 실행
 
   python3 main.py --config config.yaml
