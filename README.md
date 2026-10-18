@@ -79,6 +79,6 @@ temporary repository for testing
   ros2 topic echo /TurtleBot3Burger/front_camera/image_color
   
 
-## 3번 터미널 : 변경괴 bt_node 실행
+## 3번 터미널 : 변경된 bt_node 실행
 
   python3 main.py --config config.yaml
