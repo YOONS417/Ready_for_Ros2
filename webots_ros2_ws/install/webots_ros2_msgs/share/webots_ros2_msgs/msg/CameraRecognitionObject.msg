@@ -1,5 +1,1 @@
-int32 id
-geometry_msgs/PoseStamped pose
-vision_msgs/BoundingBox2D bbox
-std_msgs/ColorRGBA[] colors
-string model
+/home/yoonsik/ros2_workspace/webots_ros2_ws/src/webots_ros2/webots_ros2_msgs/msg/CameraRecognitionObject.msg

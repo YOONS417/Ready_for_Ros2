@@ -1,2 +1,1 @@
-std_msgs/Header header
-CameraRecognitionObject[] objects
+/home/yoonsik/ros2_workspace/webots_ros2_ws/src/webots_ros2/webots_ros2_msgs/msg/CameraRecognitionObjects.msg

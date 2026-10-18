@@ -1,9 +1,1 @@
-string name
-string urdf_path
-string robot_description
-string relative_path_prefix
-string translation
-string rotation
-bool normal
-bool box_collision
-string init_pos
+/home/yoonsik/ros2_workspace/webots_ros2_ws/src/webots_ros2/webots_ros2_msgs/msg/UrdfRobot.msg

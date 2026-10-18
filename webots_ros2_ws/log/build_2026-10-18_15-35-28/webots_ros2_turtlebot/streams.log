@@ -1,0 +1,34 @@
+[0.490s] Invoking command in '/home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot': PYTHONPATH=/home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/build --no-deps symlink_data
+[0.704s] running develop
+[0.850s] running egg_info
+[0.850s] creating webots_ros2_turtlebot.egg-info
+[0.850s] writing webots_ros2_turtlebot.egg-info/PKG-INFO
+[0.850s] writing dependency_links to webots_ros2_turtlebot.egg-info/dependency_links.txt
+[0.850s] writing entry points to webots_ros2_turtlebot.egg-info/entry_points.txt
+[0.850s] writing requirements to webots_ros2_turtlebot.egg-info/requires.txt
+[0.850s] writing top-level names to webots_ros2_turtlebot.egg-info/top_level.txt
+[0.850s] writing manifest file 'webots_ros2_turtlebot.egg-info/SOURCES.txt'
+[0.852s] reading manifest file 'webots_ros2_turtlebot.egg-info/SOURCES.txt'
+[0.852s] writing manifest file 'webots_ros2_turtlebot.egg-info/SOURCES.txt'
+[0.854s] running build_ext
+[0.854s] Creating /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/lib/python3.10/site-packages/webots-ros2-turtlebot.egg-link (link to .)
+[0.855s] 
+[0.855s] Installed /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot
+[0.855s] running symlink_data
+[0.855s] creating /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/ament_index
+[0.855s] creating /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/ament_index/resource_index
+[0.855s] creating /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/ament_index/resource_index/packages
+[0.855s] symbolically linking /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/resource/webots_ros2_turtlebot -> /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/ament_index/resource_index/packages
+[0.855s] creating /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/launch
+[0.856s] symbolically linking /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/launch/robot_launch.py -> /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/launch
+[0.856s] creating /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/resource
+[0.856s] symbolically linking /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/resource/turtlebot3_burger_example_map.pgm -> /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/resource
+[0.856s] symbolically linking /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/resource/turtlebot3_burger_example_map.yaml -> /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/resource
+[0.856s] symbolically linking /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/resource/turtlebot_webots.urdf -> /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/resource
+[0.856s] symbolically linking /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/resource/ros2control.yml -> /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/resource
+[0.856s] symbolically linking /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/resource/nav2_params.yaml -> /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/resource
+[0.856s] creating /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/worlds
+[0.856s] symbolically linking /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/worlds/turtlebot3_burger_example.wbt -> /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/worlds
+[0.856s] symbolically linking /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/worlds/.turtlebot3_burger_example.wbproj -> /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot/worlds
+[0.856s] symbolically linking /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/package.xml -> /home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/share/webots_ros2_turtlebot
+[0.883s] Invoked command in '/home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot' returned '0': PYTHONPATH=/home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/ros2_workspace/webots_ros2_ws/install/webots_ros2_turtlebot/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_turtlebot/build --no-deps symlink_data
