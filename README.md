@@ -59,7 +59,7 @@ temporary repository for testing
 # 팀과제 실행 방법
 
 ## 1번 터미널 : webots + RViz 실행
-  cd 임시폴더/Ready_for_ros2/webots_ros2_ws
+  cd ~/임시폴더/Ready_for_ros2/webots_ros2_ws
   
   colcon build
   
