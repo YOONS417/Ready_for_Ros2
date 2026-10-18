@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="webots_homework_tree">
+    <Sequence>
+      <!-- 단계 1: RViz 목표 지점으로 이동 (Nav2 액션 연동) -->
+      <MoveToGoal name="MoveToGoal"/>
+      
+      <!-- 단계 2: 목적지 도착 후 카메라 사진 촬영 및 저장 (ROS 서비스 연동) -->
+      <CaptureImage name="CaptureImage"/>
+      
+      <!-- 단계 3: 초기 출발 위치로 복귀 (Nav2 액션 연동) -->
+      <Return name="Return"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="MoveToGoal" editable="true"/>
+    <Action ID="CaptureImage" editable="true"/>
+    <Action ID="Return" editable="true"/>
+  </TreeNodesModel>
+
+</root>
