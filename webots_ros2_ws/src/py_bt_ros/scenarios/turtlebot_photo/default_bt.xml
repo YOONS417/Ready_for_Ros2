@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="photo-mission">
+    <Sequence>
+      <WaitForGoal/>
+      <MoveToGoal/>
+      <CaptureImage/>
+      <ReturnToStart/>
+    </Sequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Condition ID="WaitForGoal" editable="true"/>
+    <Action ID="MoveToGoal" editable="true"/>
+    <Action ID="CaptureImage" editable="true"/>
+    <Action ID="ReturnToStart" editable="true"/>
+  </TreeNodesModel>
+</root>

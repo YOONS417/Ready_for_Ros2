@@ -1,0 +1,13 @@
+scenario: scenarios.turtlebot_photo
+
+agent:
+  namespaces: ""          # TurtleBot3/Nav2는 네임스페이스 없이 /navigate_to_pose 사용
+  behavior_tree_xml: "default_bt.xml"
+
+bt_runner:
+  bt_tick_rate: 10.0
+  bt_visualiser:
+    enabled: True         # BT 화면이 안 뜨면 False로 바꾸세요
+    screen_width: 600
+    screen_height: 600
+  profiling_mode: False
