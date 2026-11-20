@@ -1,1 +1,0 @@
-/home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_msgs/rosidl_generator_cpp/webots_ros2_msgs/msg/detail/string_stamped__type_support.hpp

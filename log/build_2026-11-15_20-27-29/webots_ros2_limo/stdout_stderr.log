@@ -1,0 +1,30 @@
+running egg_info
+writing build/webots_ros2_limo/webots_ros2_limo.egg-info/PKG-INFO
+writing dependency_links to build/webots_ros2_limo/webots_ros2_limo.egg-info/dependency_links.txt
+writing entry points to build/webots_ros2_limo/webots_ros2_limo.egg-info/entry_points.txt
+writing requirements to build/webots_ros2_limo/webots_ros2_limo.egg-info/requires.txt
+writing top-level names to build/webots_ros2_limo/webots_ros2_limo.egg-info/top_level.txt
+reading manifest file 'build/webots_ros2_limo/webots_ros2_limo.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'build/webots_ros2_limo/webots_ros2_limo.egg-info/SOURCES.txt'
+running build
+running build_py
+copying webots_ros2_limo/mq3_serial_bridge.py -> /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build/lib/webots_ros2_limo
+copying webots_ros2_limo/amg8833_visualize.py -> /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build/lib/webots_ros2_limo
+copying webots_ros2_limo/auto_explorer.py -> /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build/lib/webots_ros2_limo
+running install
+running install_lib
+copying /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build/lib/webots_ros2_limo/mq3_serial_bridge.py -> /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo
+copying /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build/lib/webots_ros2_limo/amg8833_visualize.py -> /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo
+copying /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build/lib/webots_ros2_limo/auto_explorer.py -> /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo
+byte-compiling /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo/mq3_serial_bridge.py to mq3_serial_bridge.cpython-310.pyc
+byte-compiling /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo/amg8833_visualize.py to amg8833_visualize.cpython-310.pyc
+byte-compiling /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo/auto_explorer.py to auto_explorer.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo-0.0.1-py3.10.egg-info' (and everything under it)
+Copying build/webots_ros2_limo/webots_ros2_limo.egg-info to /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo-0.0.1-py3.10.egg-info
+running install_scripts
+Installing auto_explorer script to /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/webots_ros2_limo
+Installing mq3_serial_bridge script to /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/webots_ros2_limo
+writing list of installed files to '/home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/install.log'

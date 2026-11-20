@@ -1,0 +1,28 @@
+[0.501s] Invoking command in '/home/yoonsik/webots_ros2_limo': PYTHONPATH=/home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/webots_ros2_limo build --build-base /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build install --record /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/install.log --install-scripts $base/lib/webots_ros2_limo --single-version-externally-managed install_data
+[0.633s] running egg_info
+[0.633s] writing build/webots_ros2_limo/webots_ros2_limo.egg-info/PKG-INFO
+[0.633s] writing dependency_links to build/webots_ros2_limo/webots_ros2_limo.egg-info/dependency_links.txt
+[0.633s] writing entry points to build/webots_ros2_limo/webots_ros2_limo.egg-info/entry_points.txt
+[0.633s] writing requirements to build/webots_ros2_limo/webots_ros2_limo.egg-info/requires.txt
+[0.633s] writing top-level names to build/webots_ros2_limo/webots_ros2_limo.egg-info/top_level.txt
+[0.634s] reading manifest file 'build/webots_ros2_limo/webots_ros2_limo.egg-info/SOURCES.txt'
+[0.644s] adding license file 'LICENSE'
+[0.644s] writing manifest file 'build/webots_ros2_limo/webots_ros2_limo.egg-info/SOURCES.txt'
+[0.644s] running build
+[0.644s] running build_py
+[0.644s] copying webots_ros2_limo/mq3_serial_bridge.py -> /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build/lib/webots_ros2_limo
+[0.644s] running install
+[0.644s] running install_lib
+[0.644s] copying /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build/lib/webots_ros2_limo/mq3_serial_bridge.py -> /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo
+[0.644s] byte-compiling /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo/mq3_serial_bridge.py to mq3_serial_bridge.cpython-310.pyc
+[0.644s] running install_data
+[0.645s] copying rviz/limo_cartographer.rviz -> /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/share/webots_ros2_limo/rviz
+[0.645s] copying arduino/mq3_serial/mq3_serial.ino -> /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/share/webots_ros2_limo/arduino/mq3_serial
+[0.645s] running install_egg_info
+[0.646s] removing '/home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo-0.0.1-py3.10.egg-info' (and everything under it)
+[0.649s] Copying build/webots_ros2_limo/webots_ros2_limo.egg-info to /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo-0.0.1-py3.10.egg-info
+[0.651s] running install_scripts
+[0.660s] Installing auto_explorer script to /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/webots_ros2_limo
+[0.660s] Installing mq3_serial_bridge script to /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/webots_ros2_limo
+[0.660s] writing list of installed files to '/home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/install.log'
+[0.678s] Invoked command in '/home/yoonsik/webots_ros2_limo' returned '0': PYTHONPATH=/home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/webots_ros2_limo build --build-base /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build install --record /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/install.log --install-scripts $base/lib/webots_ros2_limo --single-version-externally-managed install_data

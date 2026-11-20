@@ -1,1 +1,0 @@
-/home/yoonsik/ros2_workspace/webots_ros2_ws/build/webots_ros2_msgs/rosidl_generator_c/webots_ros2_msgs/msg/pen_ink_properties.h

@@ -1,0 +1,22 @@
+[0.318s] Invoking command in '/home/yoonsik/webots_ros2_limo': PYTHONPATH=/home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/webots_ros2_limo build --build-base /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build install --record /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/install.log --install-scripts $base/lib/webots_ros2_limo --single-version-externally-managed install_data
+[0.439s] running egg_info
+[0.440s] writing build/webots_ros2_limo/webots_ros2_limo.egg-info/PKG-INFO
+[0.440s] writing dependency_links to build/webots_ros2_limo/webots_ros2_limo.egg-info/dependency_links.txt
+[0.440s] writing entry points to build/webots_ros2_limo/webots_ros2_limo.egg-info/entry_points.txt
+[0.440s] writing requirements to build/webots_ros2_limo/webots_ros2_limo.egg-info/requires.txt
+[0.440s] writing top-level names to build/webots_ros2_limo/webots_ros2_limo.egg-info/top_level.txt
+[0.441s] reading manifest file 'build/webots_ros2_limo/webots_ros2_limo.egg-info/SOURCES.txt'
+[0.441s] adding license file 'LICENSE'
+[0.442s] writing manifest file 'build/webots_ros2_limo/webots_ros2_limo.egg-info/SOURCES.txt'
+[0.442s] running build
+[0.442s] running build_py
+[0.442s] running install
+[0.442s] running install_lib
+[0.442s] running install_data
+[0.443s] running install_egg_info
+[0.443s] removing '/home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo-0.0.1-py3.10.egg-info' (and everything under it)
+[0.445s] Copying build/webots_ros2_limo/webots_ros2_limo.egg-info to /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo-0.0.1-py3.10.egg-info
+[0.445s] running install_scripts
+[0.467s] Installing auto_explorer script to /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/webots_ros2_limo
+[0.468s] writing list of installed files to '/home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/install.log'
+[0.481s] Invoked command in '/home/yoonsik/webots_ros2_limo' returned '0': PYTHONPATH=/home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/webots_ros2_limo build --build-base /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build install --record /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/install.log --install-scripts $base/lib/webots_ros2_limo --single-version-externally-managed install_data

@@ -1,1 +1,0 @@
-/home/yoonsik/ros2_workspace/webots_ros2_ws/src/webots_ros2/webots_ros2_driver/include/webots_ros2_driver/plugins/dynamic/Ros2RGBD.hpp

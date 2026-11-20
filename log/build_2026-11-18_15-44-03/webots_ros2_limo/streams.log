@@ -1,0 +1,29 @@
+[0.480s] Invoking command in '/home/yoonsik/webots_ros2_limo': PYTHONPATH=/home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/webots_ros2_limo build --build-base /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build install --record /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/install.log --install-scripts $base/lib/webots_ros2_limo --single-version-externally-managed install_data
+[0.604s] running egg_info
+[0.605s] writing build/webots_ros2_limo/webots_ros2_limo.egg-info/PKG-INFO
+[0.605s] writing dependency_links to build/webots_ros2_limo/webots_ros2_limo.egg-info/dependency_links.txt
+[0.605s] writing entry points to build/webots_ros2_limo/webots_ros2_limo.egg-info/entry_points.txt
+[0.605s] writing requirements to build/webots_ros2_limo/webots_ros2_limo.egg-info/requires.txt
+[0.605s] writing top-level names to build/webots_ros2_limo/webots_ros2_limo.egg-info/top_level.txt
+[0.606s] reading manifest file 'build/webots_ros2_limo/webots_ros2_limo.egg-info/SOURCES.txt'
+[0.615s] adding license file 'LICENSE'
+[0.615s] writing manifest file 'build/webots_ros2_limo/webots_ros2_limo.egg-info/SOURCES.txt'
+[0.615s] running build
+[0.615s] running build_py
+[0.615s] copying webots_ros2_limo/mq3_characterization_logger.py -> /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build/lib/webots_ros2_limo
+[0.615s] running install
+[0.615s] running install_lib
+[0.616s] copying /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build/lib/webots_ros2_limo/mq3_characterization_logger.py -> /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo
+[0.616s] byte-compiling /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo/mq3_characterization_logger.py to mq3_characterization_logger.cpython-310.pyc
+[0.617s] running install_data
+[0.617s] creating /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/share/webots_ros2_limo/arduino/scd41_serial
+[0.618s] copying arduino/scd41_serial/scd41_serial.ino -> /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/share/webots_ros2_limo/arduino/scd41_serial
+[0.618s] running install_egg_info
+[0.618s] removing '/home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo-0.0.1-py3.10.egg-info' (and everything under it)
+[0.618s] Copying build/webots_ros2_limo/webots_ros2_limo.egg-info to /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages/webots_ros2_limo-0.0.1-py3.10.egg-info
+[0.618s] running install_scripts
+[0.630s] Installing auto_explorer script to /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/webots_ros2_limo
+[0.630s] Installing mq3_characterization_logger script to /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/webots_ros2_limo
+[0.630s] Installing mq3_serial_bridge script to /home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/webots_ros2_limo
+[0.630s] writing list of installed files to '/home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/install.log'
+[0.646s] Invoked command in '/home/yoonsik/webots_ros2_limo' returned '0': PYTHONPATH=/home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/yoonsik/webots_ros2_limo/install/webots_ros2_limo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/webots_ros2_limo build --build-base /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/build install --record /home/yoonsik/webots_ros2_limo/build/webots_ros2_limo/install.log --install-scripts $base/lib/webots_ros2_limo --single-version-externally-managed install_data
