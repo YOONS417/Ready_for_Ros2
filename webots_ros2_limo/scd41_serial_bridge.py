@@ -29,7 +29,7 @@ class SCD41SerialBridge(Node):
 
     def connect_serial(self):
         try:
-            self.serial_port = serial.Serial(self.port, self.baud_rate, timeout=0)
+            self.serial_port = serial.Serial(self.port, self.baud_rate, timeout=0.1)
             self.rx_buffer.clear()
             self.get_logger().info(f'Connected to SCD41 Arduino on {self.port}')
         except serial.SerialException as exc:
@@ -45,35 +45,44 @@ class SCD41SerialBridge(Node):
 
         try:
             waiting = self.serial_port.in_waiting
-            data = self.serial_port.read(waiting if waiting else 1)
+            if waiting > 0:
+                data = self.serial_port.read(waiting)
+                if data:
+                    self.rx_buffer.extend(data)
         except serial.SerialException as exc:
-            self.get_logger().warning(f'SCD41 serial connection lost: {exc}')
+            self.get_logger().error(f'SCD41 serial connection lost: {exc}')
             self.close_serial()
             self.next_connect_attempt = time.monotonic() + 2.0
             return
 
-        if not data:
-            return
-
-        self.rx_buffer.extend(data)
-        if len(self.rx_buffer) > 512:
+        if len(self.rx_buffer) > 1024:
             self.rx_buffer.clear()
             return
 
         while b'\n' in self.rx_buffer:
             line, _, remaining = self.rx_buffer.partition(b'\n')
             self.rx_buffer = bytearray(remaining)
-            self.publish_reading(line.decode('ascii', errors='ignore').strip())
+            
+            try:
+                decoded_line = line.decode('ascii', errors='ignore').strip()
+                if decoded_line:
+                    # 원시 데이터 로그 (값이 안 보일 때 디버깅용)
+                    self.get_logger().info(f'Raw Serial: {decoded_line}')
+                    self.publish_reading(decoded_line)
+            except Exception as e:
+                self.get_logger().error(f'Decode error: {e}')
 
     def publish_reading(self, line):
         try:
-            # Arduino는 오직 CO2 ppm 정수값만 Serial.println()으로 전송함
-            co2_val = int(line)
-            msg = UInt16()
-            msg.data = co2_val
-            self.co2_pub.publish(msg)
+            # 숫자만 포함되어 있는지 확인
+            if line.isdigit():
+                co2_val = int(line)
+                msg = UInt16()
+                msg.data = co2_val
+                self.co2_pub.publish(msg)
+            else:
+                self.get_logger().debug(f'Ignoring non-digit data: {line}')
         except ValueError:
-            # 숫자가 아닌 문자열(에러 메시지 등)은 무시
             return
 
     def close_serial(self):

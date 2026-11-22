@@ -3,53 +3,58 @@ import time
 import numpy as np
 import rclpy
 from rclpy.node import Node
-from rclpy.qos import QoSProfile, ReliabilityPolicy
+from rclpy.qos import DurabilityPolicy, QoSProfile, ReliabilityPolicy
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import OccupancyGrid, Odometry
 from geometry_msgs.msg import Twist
-from std_msgs.msg import UInt16
+from std_msgs.msg import Float32MultiArray, UInt16
 from visualization_msgs.msg import Marker, MarkerArray
 
+
 class SmoothCoverageExplorer(Node):
-    """실시간 지도 frontier를 탐색하고 MQ-3 신호를 따라 짧은 이동을 반복한다.
+    """실시간 지도 frontier를 탐색하고 SCD41 CO2 신호를 따라 짧은 이동을 반복한다.
 
     입력은 `/scan` 장애물 거리, `/map` SLAM 점유격자, `/odom` 자세,
-    `/gas/mq3/raw_adc` 원시 센서값이다. 탐색 주행 명령은 `/cmd_vel`로 내보내며,
-    지속 감지 시 정지 측정, 변화율 가중 방향 선택, 근거리 이동을 반복한다.
+    `/gas/scd41/co2` 이산화탄소 농도(ppm), `/gas/scd41/thresholds` 임계값이다.
+    탐색 주행 명령은 `/cmd_vel`로 내보내며, 지속 감지 시 정지 측정, 변화율 가중
+    방향 선택, 근거리 이동을 반복한다.
     """
 
     def __init__(self):
         """ROS 연결, 가스 정지 기준, 탐색 상태와 마커 타이머를 초기화한다."""
         super().__init__('auto_explorer')
-        
+
         scan_qos = QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT)
-        
+
         # 입력: 라이다 거리 배열(/scan), SLAM 격자(/map), 휠/IMU 추정 자세(/odom).
         self.scan_sub = self.create_subscription(LaserScan, '/scan', self.scan_cb, scan_qos)
         self.map_sub = self.create_subscription(OccupancyGrid, '/map', self.map_cb, 10)
         self.odom_sub = self.create_subscription(Odometry, '/odom', self.odom_cb, 10)
         # 출력: 탐색 속도 명령(/cmd_vel). 가스 정지 시 이 노드가 0 속도를 발행한다.
         self.cmd_pub = self.create_publisher(Twist, '/cmd_vel', 10)
-        # 이 값은 ppm이 아닌 Arduino ADC count다. 실행 인자로 재정의할 수 있다.
-        self.declare_parameter('gas_adc_stop_threshold', 1700)
-        self.declare_parameter('gas_adc_release_threshold', 360)
-        self.declare_parameter('gas_confirm_samples', 3)
+
+        # SCD41 CO2 파라미터 (단위: ppm)
+        # characterization 노드가 계산한 임계값을 수신할 토픽
+        self.declare_parameter('gas_threshold_topic', '/gas/scd41/thresholds')
+        self.declare_parameter('gas_confirm_samples', 2)
         self.declare_parameter('gas_probe_distance', 0.3)
-        self.declare_parameter('gas_probe_settle_sec', 10.0)
+        self.declare_parameter('gas_probe_settle_sec', 16.0)
         self.declare_parameter('gas_probe_sample_count', 3)
-        self.declare_parameter('gas_probe_min_delta', 15)
-        self.declare_parameter('gas_probe_rate_weight_sec', 1.0)
-        self.declare_parameter('gas_probe_max_rate_gain', 20.0)
+        self.declare_parameter('gas_probe_min_delta', 50)
+        self.declare_parameter('gas_probe_rate_weight_sec', 2.0)
+        self.declare_parameter('gas_probe_max_rate_gain', 100.0)
         self.declare_parameter('gas_probe_max_moves', 5)
         self.declare_parameter('gas_probe_max_flat_steps', 3)
         self.declare_parameter('gas_probe_heading_change_deg', 137.5)
         self.declare_parameter('gas_probe_arrival_tolerance', 0.05)
         self.declare_parameter('gas_probe_turn_tolerance', 0.08)
-        self.declare_parameter('gas_probe_move_timeout_sec', 15.0)
-        self.gas_adc_stop_threshold = int(
-            self.get_parameter('gas_adc_stop_threshold').value)
-        self.gas_adc_release_threshold = int(
-            self.get_parameter('gas_adc_release_threshold').value)
+        self.declare_parameter('gas_probe_move_timeout_sec', 20.0)
+
+        self.gas_threshold_topic = str(
+            self.get_parameter('gas_threshold_topic').value)
+        self.gas_co2_stop_threshold = None
+        self.gas_co2_release_threshold = None
+
         self.gas_confirm_samples = int(
             self.get_parameter('gas_confirm_samples').value)
         self.gas_probe_distance = float(
@@ -76,8 +81,7 @@ class SmoothCoverageExplorer(Node):
             self.get_parameter('gas_probe_turn_tolerance').value)
         self.gas_probe_move_timeout_sec = float(
             self.get_parameter('gas_probe_move_timeout_sec').value)
-        if not 0 <= self.gas_adc_release_threshold < self.gas_adc_stop_threshold <= 1023:
-            raise ValueError('gas ADC release threshold must be below stop threshold')
+
         if (self.gas_confirm_samples < 1 or self.gas_probe_sample_count < 1
                 or self.gas_probe_max_moves < 1
                 or self.gas_probe_max_flat_steps < 1):
@@ -91,16 +95,20 @@ class SmoothCoverageExplorer(Node):
                 or self.gas_probe_min_delta < 0):
             raise ValueError('gas probe distances, timeout, and delta are invalid')
 
-        self.gas_state = 'EXPLORING'
+        self.gas_state = 'INITIALIZING'
+        self.get_logger().info(
+            f'>>> {self.gas_threshold_topic} 에서 characterization 임계값 수신 대기 중... <<<'
+        )
+
         self.gas_high_count = 0
         self.gas_low_count = 0
         self.gas_confirm_readings = []
         self.gas_probe_readings = []
         self.gas_probe_history = []
-        self.gas_probe_center_adc = 0.0
-        self.gas_probe_previous_adc = 0.0
+        self.gas_probe_center_co2 = 0.0
+        self.gas_probe_previous_co2 = 0.0
         self.gas_probe_previous_position = None
-        self.gas_probe_best_adc = 0.0
+        self.gas_probe_best_co2 = 0.0
         self.gas_probe_best_position = None
         self.gas_probe_move_count = 0
         self.gas_probe_flat_count = 0
@@ -109,26 +117,40 @@ class SmoothCoverageExplorer(Node):
         self.gas_probe_settle_started = 0.0
         self.gas_probe_deadline = 0.0
         self.gas_probe_target_yaw = 0.0
-        # MQ-3 브리지의 UInt16 원시 ADC 토픽을 받아 위 임계값과 비교한다.
+
+        # SCD41 시리얼 브리지의 UInt16 CO2 ppm 토픽을 받아 임계값과 비교한다.
         self.gas_sub = self.create_subscription(
-            UInt16, '/gas/mq3/raw_adc', self.gas_adc_cb, 10)
-        
+            UInt16, '/gas/scd41/co2', self.gas_co2_cb, 10)
+
+        # characterization 노드가 늦게/먼저 실행돼도 마지막 임계값을 수신하도록 TRANSIENT_LOCAL 설정
+        threshold_qos = QoSProfile(
+            depth=1,
+            reliability=ReliabilityPolicy.RELIABLE,
+            durability=DurabilityPolicy.TRANSIENT_LOCAL,
+        )
+        self.threshold_sub = self.create_subscription(
+            Float32MultiArray,
+            self.gas_threshold_topic,
+            self.threshold_cb,
+            threshold_qos,
+        )
+
         # RViz2 가시화를 위한 MarkerArray 퍼블리셔 추가
         self.marker_pub = self.create_publisher(MarkerArray, '/coverage_markers', 10)
 
         self.robot_x = 0.0
         self.robot_y = 0.0
         self.robot_yaw = 0.0
-        
+
         self.mode = 'EXPLORE_FRONTIER'
         self.patrol_cycle = 1
         self.sensor_radius = 1.5  # 가스 센서 감지 반경 (1.5m)
-        
+
         self.target_point = None
         self.target_lock_time = 0.0
         self.blacklist = []
         self.visited_breadcrumbs = []
-        
+
         self.prev_angular_z = 0.0
         self.last_check_x = 0.0
         self.last_check_y = 0.0
@@ -136,10 +158,10 @@ class SmoothCoverageExplorer(Node):
         self.backup_steps = 0
         self.turn_steps = 0
         self.turn_dir = 1.0
-        
+
         # 0.5초마다 RViz 마커 업데이트
         self.marker_timer = self.create_timer(0.5, self.publish_markers)
-        
+
         self.get_logger().info('[가시화 포함] 프론티어 탐색 및 사각지대 순찰 노드를 시작합니다!')
 
     def publish_markers(self):
@@ -207,16 +229,54 @@ class SmoothCoverageExplorer(Node):
         marker_array.markers.append(m)
         self.marker_pub.publish(marker_array)
 
-    def gas_adc_cb(self, msg):
-        """ADC 입력으로 일시 감지/지속 감지를 나누고 정지 측정을 진행한다.
+    def threshold_cb(self, msg):
+        """characterization 노드가 발행한 기준선과 임계값을 받아 탐색을 시작한다."""
+        if len(msg.data) < 3:
+            self.get_logger().warning('임계값 메시지 길이가 부족합니다 (3개 값 필요).')
+            return
+
+        baseline = float(msg.data[0])
+        stop_th = int(round(msg.data[1]))
+        release_th = int(round(msg.data[2]))
+
+        if not 0 <= release_th < stop_th:
+            self.get_logger().warning(
+                f'유효하지 않은 임계값 무시: stop={stop_th}, release={release_th}'
+            )
+            return
+
+        self.gas_co2_stop_threshold = stop_th
+        self.gas_co2_release_threshold = release_th
+
+        if self.gas_state == 'INITIALIZING':
+            self.gas_state = 'EXPLORING'
+            self.get_logger().error('================================================================')
+            self.get_logger().error(f'>>> SCD41 임계값 수신 완료! 기준 농도: {baseline:.0f} ppm')
+            self.get_logger().error(
+                f'>>> 정지 임계값: {stop_th} ppm / 해제 임계값: {release_th} ppm'
+            )
+            self.get_logger().error('>>> 이제 프론티어 탐색 주행을 시작합니다! <<<')
+            self.get_logger().error('================================================================')
+        else:
+            self.get_logger().info(
+                f'SCD41 임계값 갱신: stop={stop_th} ppm, release={release_th} ppm'
+            )
+
+    def gas_co2_cb(self, msg):
+        """CO2 ppm 입력으로 일시 감지/지속 감지를 나누고 정지 측정을 진행한다.
 
         센서와 토픽은 계속 동작하지만, 정지 후 안정화가 끝난 샘플만
         PROBE_SAMPLING에서 위치별 탐색 데이터로 채택한다.
         """
-        adc_value = int(msg.data)
+        co2_value = int(msg.data)
+
+        if self.gas_state == 'INITIALIZING':
+            return
+        if self.gas_co2_stop_threshold is None or self.gas_co2_release_threshold is None:
+            return
 
         if self.gas_state == 'EXPLORING':
-            if adc_value < self.gas_adc_stop_threshold:
+            if co2_value < self.gas_co2_stop_threshold:
                 return
             self.gas_state = 'CONFIRMING'
             self.gas_high_count = 0
@@ -224,19 +284,19 @@ class SmoothCoverageExplorer(Node):
             self.gas_confirm_readings.clear()
             self._clear_motion_state()
             self.get_logger().warning(
-                f'MQ-3 ADC {adc_value} >= {self.gas_adc_stop_threshold}; '
+                f'SCD41 CO2 {co2_value} >= {self.gas_co2_stop_threshold}; '
                 'stopped for confirmation')
 
         if self.gas_state == 'CONFIRMING':
             self.cmd_pub.publish(Twist())
-            if adc_value >= self.gas_adc_stop_threshold:
+            if co2_value >= self.gas_co2_stop_threshold:
                 self.gas_high_count += 1
                 self.gas_low_count = 0
-                self.gas_confirm_readings.append(adc_value)
+                self.gas_confirm_readings.append(co2_value)
                 self.gas_confirm_readings = self.gas_confirm_readings[-self.gas_confirm_samples:]
                 if self.gas_high_count >= self.gas_confirm_samples:
                     self._begin_adaptive_search()
-            elif adc_value <= self.gas_adc_release_threshold:
+            elif co2_value <= self.gas_co2_release_threshold:
                 self.gas_low_count += 1
                 self.gas_high_count = 0
                 self.gas_confirm_readings.clear()
@@ -244,7 +304,7 @@ class SmoothCoverageExplorer(Node):
                     self.gas_state = 'EXPLORING'
                     self.gas_low_count = 0
                     self.get_logger().info(
-                        'MQ-3 signal returned below release threshold; '
+                        'SCD41 CO2 returned below release threshold; '
                         'resuming frontier exploration')
             else:
                 self.gas_high_count = 0
@@ -259,7 +319,7 @@ class SmoothCoverageExplorer(Node):
             self.gas_probe_readings.clear()
 
         if self.gas_state == 'PROBE_SAMPLING':
-            self.gas_probe_readings.append((adc_value, time.monotonic()))
+            self.gas_probe_readings.append((co2_value, time.monotonic()))
             if len(self.gas_probe_readings) >= self.gas_probe_sample_count:
                 self._process_probe_sample()
 
@@ -272,10 +332,15 @@ class SmoothCoverageExplorer(Node):
     def _begin_adaptive_search(self):
         """감지 위치를 기준점으로 기록하고 첫 정지 샘플을 준비한다."""
         self.cmd_pub.publish(Twist())
-        self.gas_probe_center_adc = float(np.median(self.gas_confirm_readings))
-        self.gas_probe_previous_adc = self.gas_probe_center_adc
+        self.get_logger().error('================================================================')
+        self.get_logger().error('>>> 가스 농도 임계값 초과! 적응형 역추적 알고리즘을 시작합니다. <<<')
+        self.get_logger().error('>>> [1번째 위치] 가스원 추적을 위한 데이터 수집 및 안정화 중... <<<')
+        self.get_logger().error('================================================================')
+
+        self.gas_probe_center_co2 = float(np.median(self.gas_confirm_readings))
+        self.gas_probe_previous_co2 = self.gas_probe_center_co2
         self.gas_probe_previous_position = (self.robot_x, self.robot_y)
-        self.gas_probe_best_adc = self.gas_probe_center_adc
+        self.gas_probe_best_co2 = self.gas_probe_center_co2
         self.gas_probe_best_position = (self.robot_x, self.robot_y)
         self.gas_probe_heading = self.robot_yaw
         self.gas_probe_last_move_heading = self.robot_yaw
@@ -286,7 +351,7 @@ class SmoothCoverageExplorer(Node):
         self.gas_state = 'PROBE_SETTLING'
         self.gas_probe_settle_started = time.monotonic()
         self.get_logger().warning(
-            f'Persistent MQ-3 at ADC median={self.gas_probe_center_adc:.0f}; '
+            f'Persistent SCD41 CO2 at median={self.gas_probe_center_co2:.0f}; '
             'stopping to measure before adaptive search')
 
     def _process_probe_sample(self):
@@ -298,35 +363,35 @@ class SmoothCoverageExplorer(Node):
         readings = self.gas_probe_readings
         values = [value for value, _ in readings]
         stamps = [stamp for _, stamp in readings]
-        median_adc = float(np.median(values))
+        median_co2 = float(np.median(values))
         elapsed = max(stamps[-1] - stamps[0], 1e-3)
-        adc_rate = (values[-1] - values[0]) / elapsed
+        co2_rate = (values[-1] - values[0]) / elapsed
         position = (self.robot_x, self.robot_y)
         self.gas_probe_history.append({
             'position': position,
             'time': stamps[-1],
-            'median_adc': median_adc,
-            'rate_adc_per_sec': adc_rate,
+            'median_co2': median_co2,
+            'rate_co2_per_sec': co2_rate,
         })
 
-        if median_adc > self.gas_probe_best_adc:
-            self.gas_probe_best_adc = median_adc
+        if median_co2 > self.gas_probe_best_co2:
+            self.gas_probe_best_co2 = median_co2
             self.gas_probe_best_position = position
 
         # 첫 정지 표본은 기준 위치의 센서 추세 확인용이다. 이동 방향 정보가
         # 아직 없으므로 현재 바라보는 쪽으로 한 번만 짧게 이동해 비교를 시작한다.
         if self.gas_probe_move_count == 0:
-            self.gas_probe_previous_adc = median_adc
+            self.gas_probe_previous_co2 = median_co2
             self.gas_probe_previous_position = position
             self.get_logger().info(
-                f'Probe baseline: median={median_adc:.0f}, '
-                f'stationary rate={adc_rate:.1f} ADC/s')
+                f'[1번째 위치 측정 완료] median: {median_co2:.0f} ppm, 변화율: {co2_rate:.1f} ppm/s')
+            self.get_logger().info('첫 번째 기준 데이터를 확보했습니다. 탐색 주행을 시작합니다.')
             self._start_probe_move(self.robot_yaw)
             return
 
         previous_position = self.gas_probe_previous_position
-        spatial_delta = median_adc - self.gas_probe_previous_adc
-        rate_gain = self.gas_probe_rate_weight_sec * adc_rate
+        spatial_delta = median_co2 - self.gas_probe_previous_co2
+        rate_gain = self.gas_probe_rate_weight_sec * co2_rate
         rate_gain = max(
             -self.gas_probe_max_rate_gain,
             min(self.gas_probe_max_rate_gain, rate_gain))
@@ -338,18 +403,17 @@ class SmoothCoverageExplorer(Node):
             math.atan2(dy, dx) if moved_distance > 1e-4
             else self.gas_probe_last_move_heading)
 
-        self.get_logger().info(
-            f'Probe at ({position[0]:.2f}, {position[1]:.2f}): '
-            f'median={median_adc:.0f}, spatial delta={spatial_delta:.0f}, '
-            f'rate={adc_rate:.1f} ADC/s, rate gain={rate_gain:.1f}, '
-            f'weighted gain={weighted_gain:.1f}')
-        self.gas_probe_previous_adc = median_adc
+        self.get_logger().warning(
+            f'[{self.gas_probe_move_count + 1}번째 위치 측정 결과] ppm: {median_co2:.0f}, 공간변화: {spatial_delta:.0f}, 가중이득: {weighted_gain:.1f}')
+        self.gas_probe_previous_co2 = median_co2
         self.gas_probe_previous_position = position
 
         if weighted_gain >= self.gas_probe_min_delta:
+            self.get_logger().info(f'-> [판단] 농도 증가 중! 현재 방향({math.degrees(movement_heading):.1f}도)으로 직진합니다.')
             self.gas_probe_flat_count = 0
             self.gas_probe_heading = movement_heading
         else:
+            self.get_logger().info(f'-> [판단] 농도 정체/감소. {self.gas_probe_heading_change_deg}도 회전하여 새로운 방향을 탐색합니다.')
             self.gas_probe_flat_count += 1
             if self.gas_probe_flat_count >= self.gas_probe_max_flat_steps:
                 self._finish_adaptive_search()
@@ -396,9 +460,7 @@ class SmoothCoverageExplorer(Node):
         self.gas_probe_deadline = (
             time.monotonic() + self.gas_probe_move_timeout_sec)
         self.get_logger().info(
-            f'Adaptive move {self.gas_probe_move_count}/'
-            f'{self.gas_probe_max_moves} to '
-            f'({self.target_point[0]:.2f}, {self.target_point[1]:.2f})')
+            f'>>> [{self.gas_probe_move_count + 1}번째 위치로 이동 시작] 목표: ({self.target_point[0]:.2f}, {self.target_point[1]:.2f})')
 
     def _finish_adaptive_search(self):
         """정체 또는 이동 한도에 도달하면 측정 최고값 위치에서 탐색을 끝낸다."""
@@ -410,8 +472,8 @@ class SmoothCoverageExplorer(Node):
             self.gas_probe_best_position[0] - self.robot_x,
             self.gas_probe_best_position[1] - self.robot_y)
         self.get_logger().warning(
-            f'Adaptive search complete: best median ADC='
-            f'{self.gas_probe_best_adc:.0f}, '
+            f'Adaptive search complete: best median CO2='
+            f'{self.gas_probe_best_co2:.0f}, '
             f'stopped samples={len(self.gas_probe_history)}')
         if distance <= self.gas_probe_arrival_tolerance:
             self._finish_probe_approach(reached=True)
@@ -457,9 +519,8 @@ class SmoothCoverageExplorer(Node):
                 self.gas_probe_readings.clear()
                 self._clear_motion_state()
                 self.cmd_pub.publish(Twist())
-                self.get_logger().info(
-                    f'Arrived at adaptive sample point; settling for '
-                    f'{self.gas_probe_settle_sec:.1f} seconds')
+                self.get_logger().warning(
+                    f'>>> [{self.gas_probe_move_count + 1}번째 위치 도착] 센서 안정화 및 데이터 수집 중 ({self.gas_probe_settle_sec}초 대기)')
             elif now >= self.gas_probe_deadline:
                 self._stop_adaptive_search('timed out moving to sample point')
         elif self.gas_state == 'PROBE_TURNING':
@@ -561,7 +622,7 @@ class SmoothCoverageExplorer(Node):
         down = np.roll(unknown_mask, 1, axis=0)
         left = np.roll(unknown_mask, -1, axis=1)
         right = np.roll(unknown_mask, 1, axis=1)
-        
+
         frontier_mask = safe_free_mask & (up | down | left | right)
         fy, fx = np.where(frontier_mask)
 
@@ -634,13 +695,13 @@ class SmoothCoverageExplorer(Node):
         장애물, stuck 복구 상태, 목표 방향과 열린 공간을 반영해 주행한다.
         """
         if self.gas_state in (
-            'CONFIRMING', 'PROBE_SETTLING', 'PROBE_SAMPLING', 'GAS_STOPPED'):
+            'INITIALIZING', 'CONFIRMING', 'PROBE_SETTLING', 'PROBE_SAMPLING', 'GAS_STOPPED'):
             self.cmd_pub.publish(Twist())
             return
 
         n = len(msg.ranges)
         c = n // 2
-        
+
         def get_clean(arr):
             valid = [r for r in arr if not math.isnan(r) and not math.isinf(r) and r > 0.02]
             return valid if valid else [10.0]
@@ -721,7 +782,7 @@ class SmoothCoverageExplorer(Node):
             self.last_check_x = self.robot_x
             self.last_check_y = self.robot_y
             self.stuck_counter = 0
-            
+
             if moved_dist < 0.05:
                 if self.target_point is not None:
                     self.blacklist.append(self.target_point)
@@ -765,6 +826,7 @@ class SmoothCoverageExplorer(Node):
 
         self.cmd_pub.publish(twist)
 
+
 def main(args=None):
     """탐색 노드를 시작하고 종료 시 마지막 0 속도 명령을 발행한다."""
     rclpy.init(args=args)
@@ -777,6 +839,7 @@ def main(args=None):
         node.cmd_pub.publish(Twist())
         node.destroy_node()
         rclpy.shutdown()
+
 
 if __name__ == '__main__':
     main()
