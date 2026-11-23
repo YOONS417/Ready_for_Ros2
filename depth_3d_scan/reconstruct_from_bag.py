@@ -2,7 +2,7 @@
 """
 ROS 2 bag (컬러·깊이·camera_info·/odom·/tf) → 3D 메시 (Open3D TSDF).
   python3 reconstruct_from_bag.py BAG --every 1 [--best] [--out scene.ply]
-  --best = --icp + --edge-filter + --stationary,  --to-map = SLAM 지도 좌표로 저장
+  --best = --icp + --edge-filter + --stationary
 """
 import argparse
 import bisect
@@ -228,10 +228,6 @@ def main():
     ap.add_argument('--cam-pitch', type=float, default=0.0,
                     help='TF 를 못 찾았거나 --cam-xyz 를 줄 때, 카메라가 아래로 숙인 각도 [도]')
     ap.add_argument('--base-frame', default='base_link')
-    ap.add_argument('--to-map', action='store_true',
-                    help='완성된 메시를 SLAM 지도(map) 좌표로 옮김 (촬영 중간 시점의 map→odom TF 한 번만 적용)')
-    ap.add_argument('--map-frame', default='map')
-    ap.add_argument('--odom-frame', default='odom')
     ap.add_argument('--every', type=int, default=3, help='깊이 프레임 N 개마다 1 개 사용 (기본 3)')
     ap.add_argument('--max-frames', type=int, default=0, help='사용할 최대 프레임 수 (0 = 전부)')
     ap.add_argument('--voxel', type=float, default=0.01, help='메시 해상도 [m] (작을수록 정밀, 느림)')
@@ -297,14 +293,10 @@ def main():
             odoms.sort(key=lambda x: x[0])
         # 카메라 장착 TF (/tf_static + /tf)
         tf_edges = {}  # child → (parent, T)
-        map_odom = []  # (시각, T_map_odom)
         tf_conns = [c for c in r.connections if c.topic in ('/tf_static', '/tf')]
         for conn, t, raw in (r.messages(connections=tf_conns) if tf_conns else []):
             for tr in TYPESTORE.deserialize_cdr(raw, conn.msgtype).transforms:
                 child = tr.child_frame_id.lstrip('/')
-                if child == args.odom_frame and tr.header.frame_id.lstrip('/') == args.map_frame:
-                    map_odom.append((stamp_ns(tr), pose_matrix(tr.transform.translation, tr.transform.rotation)))
-                    continue
                 if child == args.base_frame or child in tf_edges:  # odom→base_link 제외
                     continue
                 tf_edges[child] = (tr.header.frame_id.lstrip('/'),
@@ -443,17 +435,6 @@ def main():
     if used < 3:
         sys.exit('[실패] 합친 프레임이 너무 적습니다. --max-dt 를 늘리거나 --every 를 줄여 보세요.')
 
-    used_stamps = [stamp_ns(depths[p[0]]) for p in pairs]
-    T_map = np.eye(4)
-    if args.to_map:
-        if not map_odom:
-            print(f'  (--to-map: bag 에 {args.map_frame} → {args.odom_frame} TF 가 없어 odom 좌표 그대로 저장)')
-        else:
-            mid = sorted(used_stamps)[len(used_stamps) // 2]
-            T_map = min(map_odom, key=lambda x: abs(x[0] - mid))[1]
-            print(f'map 좌표로 변환: {args.map_frame} → {args.odom_frame} '
-                  f'xyz=({T_map[0, 3]:.3f}, {T_map[1, 3]:.3f}), 회전 {rot_deg(T_map):.1f}도')
-
     mesh = volume.extract_triangle_mesh()
     mesh.compute_vertex_normals()
     # 작은 조각 제거
@@ -468,10 +449,6 @@ def main():
         mesh.compute_vertex_normals()
         print(f'삼각형 {n0} → {len(mesh.triangles)} 개로 줄임 (--max-triangles)')
     cloud = volume.extract_point_cloud()
-    if args.to_map:
-        mesh.transform(T_map)
-        cloud.transform(T_map)
-        poses = [T_map @ p for p in poses]
 
     base = os.path.splitext(args.out)[0]
     o3d.io.write_triangle_mesh(args.out, mesh)

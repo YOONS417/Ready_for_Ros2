@@ -262,7 +262,7 @@ python3 depth_3d_scan/auto_scan_node.py --ros-args -p start:=explorer -p explore
 Reconstruct and view on the laptop (`pip install open3d==0.19.0 rosbags "numpy<2"`):
 
 ```bash
-python3 depth_3d_scan/reconstruct_from_bag.py ~/scan_<date>_small --every 1 --max-dt 0.1 --depth-trunc 1.5 --best --to-map --out scene.ply
+python3 depth_3d_scan/reconstruct_from_bag.py ~/scan_<date>_small --every 1 --max-dt 0.1 --depth-trunc 1.5 --best --out scene.ply
 python3 depth_3d_scan/show_mesh_rviz.py scene.ply
 rviz2 -d depth_3d_scan/scene_mesh.rviz
 ```

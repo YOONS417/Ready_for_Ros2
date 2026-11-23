@@ -37,13 +37,12 @@ python3 auto_scan_node.py --ros-args -p start:=explorer -p explorer_cmd_topic:=/
 
 ## 재구성 (노트북)
 ```bash
-python3 reconstruct_from_bag.py scan_..._small --every 1 --max-dt 0.1 --depth-trunc 1.5 --best --to-map --out scene.ply
+python3 reconstruct_from_bag.py scan_..._small --every 1 --max-dt 0.1 --depth-trunc 1.5 --best --out scene.ply
 python3 show_mesh_rviz.py scene.ply                  # 터미널 A
 rviz2 -d scene_mesh.rviz                             # 터미널 B
 ```
 - 위치: 바퀴 오도메트리 + ICP 보정. ICP 는 바닥 로봇에 맞게 제자리 회전이면 수평 회전만, 이동했으면 바닥 이동 + 수평 회전만 고칩니다 (`--icp-mode auto`).
 - `--best` = `--icp` + `--edge-filter`(경계 잡음 제거) + `--stationary`(멈춘 프레임만)
-- `--to-map`: 메시를 촬영 중간 시점의 `map→odom`(cartographer) 으로 한 번만 옮겨 SLAM 지도 좌표로 저장. 프레임마다 map 좌표를 쓰면 SLAM 보정이 튈 때 메시가 찢어집니다.
 
 ## 정확도 (가짜 데이터: 바퀴 미끄러짐·시간차·경계 잡음 포함)
 | 상황 | odom 만 | `--best` |
