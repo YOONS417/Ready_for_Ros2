@@ -39,6 +39,8 @@ python3 auto_scan_node.py --ros-args -p start:=explorer -p explorer_cmd_topic:=/
 ```bash
 python3 reconstruct_from_bag.py ~/scan_<날짜>_small --out scene.ply --gl
 ```
+만들어진 `scene.ply` 를 OpenGL 뷰어로 열면 됩니다 (형식은 아래 [출력 형식](#출력-형식-opengl-뷰어용)).
+
 처리 순서
 1. 위치: 바퀴 오도메트리 + ICP 보정 (바닥 로봇이라 제자리 회전이면 수평 회전만, 이동했으면 바닥 이동 + 수평 회전만). 멈춰 있던 같은 자리 프레임은 보정을 재사용해 빠름
 2. 깊이 경계의 튀는 점 제거 후 TSDF 로 합침 (해상도 `--voxel`, 기본 1 cm)

@@ -265,6 +265,8 @@ Reconstruct on the laptop (`pip install open3d==0.19.0 rosbags "numpy<2"`). Nois
 python3 depth_3d_scan/reconstruct_from_bag.py ~/scan_<date>_small --out scene.ply --gl
 ```
 
+Then open the resulting `scene.ply` in the OpenGL viewer.
+
 ## AMG88xx Arduino thermal camera test
 
 The AMG88xx test sketch is in `arduino/amg88xx_test/amg88xx_test.ino`. In Arduino IDE, install **Adafruit AMG88xx** from Library Manager (also install **Adafruit BusIO** if prompted), select the board and port, then upload the sketch. For an Arduino Uno, select **Arduino Uno**. Connect the AMG88xx breakout's power, ground, SDA, and SCL pins to the matching board pins.
