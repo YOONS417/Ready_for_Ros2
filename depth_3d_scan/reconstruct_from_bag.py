@@ -157,12 +157,12 @@ def open3d_self_check():
 
 
 class IcpRefiner:
-    """frame-to-model point-to-plane ICP. 보정은 바닥 로봇에 맞게 제한.
-    auto: 제자리 회전(odom 이동 < 2 cm)이면 수평 회전만, 이동했으면 바닥 이동 + 수평 회전."""
+    """frame-to-model point-to-plane ICP. 보정은 바닥 로봇에 맞게 제한:
+    제자리 회전(odom 이동 < 2 cm)이면 수평 회전만, 이동했으면 바닥 이동 + 수평 회전."""
 
-    def __init__(self, intr, depth_trunc, T_base_cam, mode='auto', max_trans=0.10, max_rot=8.0, min_fitness=0.35):
+    def __init__(self, intr, depth_trunc, T_base_cam, max_trans=0.10, max_rot=8.0, min_fitness=0.35):
         self.intr, self.depth_trunc = intr, depth_trunc
-        self.T_base_cam, self.mode = T_base_cam, mode
+        self.T_base_cam = T_base_cam
         self.max_trans, self.max_rot, self.min_fitness = max_trans, max_rot, min_fitness
         self.model = None
         self.accepted = self.rejected = 0
@@ -186,18 +186,15 @@ class IcpRefiner:
                     o3d.pipelines.registration.ICPConvergenceCriteria(max_iteration=iters))
                 T, fit = res.transformation, res.fitness
             delta = T @ np.linalg.inv(init_pose)
-            mode = self.mode
-            if mode == 'auto':
-                mode = 'yaw' if moved is not None and moved < 0.02 else 'planar'
-            if mode != 'full':   # 보정을 수평 회전(+ 바닥 평면 이동)으로만 제한
-                base = (init_pose @ np.linalg.inv(self.T_base_cam))[:3, 3]   # 로봇 중심 (world)
-                yaw = np.arctan2(delta[1, 0], delta[0, 0])
-                Rz = np.array([[np.cos(yaw), -np.sin(yaw), 0], [np.sin(yaw), np.cos(yaw), 0], [0, 0, 1]])
-                shift = delta[:3, :3] @ base + delta[:3, 3] - base           # 로봇 중심이 움직인 양
-                delta = np.eye(4)
-                delta[:3, :3] = Rz
-                delta[:3, 3] = base - Rz @ base + (np.r_[shift[:2], 0] if mode == 'planar' else 0)
-                T = delta @ init_pose
+            planar = moved is None or moved >= 0.02
+            base = (init_pose @ np.linalg.inv(self.T_base_cam))[:3, 3]   # 로봇 중심 (world)
+            yaw = np.arctan2(delta[1, 0], delta[0, 0])
+            Rz = np.array([[np.cos(yaw), -np.sin(yaw), 0], [np.sin(yaw), np.cos(yaw), 0], [0, 0, 1]])
+            shift = delta[:3, :3] @ base + delta[:3, 3] - base           # 로봇 중심이 움직인 양
+            delta = np.eye(4)
+            delta[:3, :3] = Rz
+            delta[:3, 3] = base - Rz @ base + (np.r_[shift[:2], 0] if planar else 0)
+            T = delta @ init_pose
             if (fit >= self.min_fitness and np.linalg.norm(delta[:3, 3]) <= self.max_trans
                     and rot_deg(delta) <= self.max_rot):
                 pose = T
@@ -221,7 +218,6 @@ def main():
     ap.add_argument('--info-topic', default='/camera/color/camera_info',
                     help='깊이를 컬러에 맞춰 정렬(depth_registration)했다면 컬러 카메라 정보')
     ap.add_argument('--odom-topic', default='/odom')
-    ap.add_argument('--pose', choices=['auto', 'rgbd', 'odom', 'hybrid'], default='auto')
     ap.add_argument('--cam-xyz', type=float, nargs=3, default=None, metavar=('X', 'Y', 'Z'),
                     help='base_link 기준 카메라 위치 [m]. 주면 TF 대신 이 값을 씀 '
                          f'(기본: TF, 없으면 LIMO 값 {LIMO_CAM_XYZ})')
@@ -235,8 +231,6 @@ def main():
     ap.add_argument('--depth-trunc', type=float, default=2.0, help='이보다 먼 깊이는 버림 [m]')
     ap.add_argument('--max-dt', type=float, default=0.05, help='컬러-깊이 짝 허용 시간차 [s]')
     ap.add_argument('--icp', action='store_true', help='위치 미세 보정 (ICP)')
-    ap.add_argument('--icp-mode', choices=['auto', 'planar', 'yaw', 'full'], default='auto',
-                    help='ICP 보정 범위: auto(기본)=제자리 회전이면 yaw, 이동이면 planar / full=6자유도')
     ap.add_argument('--edge-filter', action='store_true', help='경계의 떠다니는 점 지우기')
     ap.add_argument('--stationary', action='store_true', help='로봇이 멈춰 있던 프레임만 사용 (/odom 필요)')
     ap.add_argument('--still-speed', type=float, default=0.02, help='멈춤 판정: 이동 속도 [m/s] 이하')
@@ -302,18 +296,12 @@ def main():
                 tf_edges[child] = (tr.header.frame_id.lstrip('/'),
                                    pose_matrix(tr.transform.translation, tr.transform.rotation))
 
-    pose_mode = args.pose
-    if pose_mode == 'auto':
-        pose_mode = 'odom' if odoms else 'rgbd'
-    if pose_mode in ('odom', 'hybrid') and not odoms:
-        sys.exit(f'[실패] --pose {pose_mode} 인데 bag 에 {args.odom_topic} 가 없습니다. --pose rgbd 로 실행하세요.')
-    if args.stationary and not odoms:
-        print('  (--stationary 는 /odom 이 있어야 해서 끕니다)')
-        args.stationary = False
+    if not odoms:
+        sys.exit(f'[실패] bag 에 {args.odom_topic} 가 없습니다. 로봇 노드(/odom)를 켜고 다시 녹화하세요.')
     opts = [n for n, on in (('icp', args.icp), ('edge-filter', args.edge_filter),
                             ('stationary', args.stationary)) if on]
     print(f'사용 프레임 {len(pairs)} 개 (깊이 {len(d_times)} 개 중 {args.every} 개마다 1 개), '
-          f'자세 추정: {pose_mode}, 품질 옵션: {", ".join(opts) or "없음"}')
+          f'품질 옵션: {", ".join(opts) or "없음"}')
 
     # 카메라 내부 파라미터
     d0 = image_to_numpy(depths[pairs[0][0]])
@@ -359,10 +347,7 @@ def main():
     volume = o3d.pipelines.integration.ScalableTSDFVolume(
         voxel_length=args.voxel, sdf_trunc=4 * args.voxel,
         color_type=o3d.pipelines.integration.TSDFVolumeColorType.RGB8)
-    odo_opt = o3d.pipelines.odometry.OdometryOption()
-    odo_opt.depth_min, odo_opt.depth_max = args.depth_min, args.depth_trunc
-    jac = o3d.pipelines.odometry.RGBDOdometryJacobianFromHybridTerm()
-    icp = IcpRefiner(intr, args.depth_trunc, T_base_cam, args.icp_mode) if args.icp else None
+    icp = IcpRefiner(intr, args.depth_trunc, T_base_cam) if args.icp else None
 
     if args.stationary:
         still = [p for p in pairs if is_still(stamp_ns(depths[p[0]]))]
@@ -373,9 +358,9 @@ def main():
             print('  (멈춘 프레임이 5 개보다 적어 전체를 씁니다. 멈췄다 움직이며 찍어 주세요)')
 
     poses, used = [], 0
-    prev_rgbd, prev_pose, prev_odom = None, None, None
+    prev_odom = None
     correction = np.eye(4)  # ICP 누적 보정
-    skipped_sync = rgbd_fail = 0
+    skipped_sync = 0
     for dt_, ct in pairs:
         dmsg, cmsg = depths[dt_], colors[ct]
         if abs(stamp_ns(dmsg) - stamp_ns(cmsg)) > args.max_dt * 1e9:
@@ -388,48 +373,32 @@ def main():
             depth = remove_flying_pixels(depth)
         color = resize_nearest(image_to_numpy(cmsg), H, W)
         o3d_color, o3d_depth = o3d.geometry.Image(np.ascontiguousarray(color)), o3d.geometry.Image(depth)
-        rgbd_col = o3d.geometry.RGBDImage.create_from_color_and_depth(  # 색칠·ICP 용
+        rgbd_col = o3d.geometry.RGBDImage.create_from_color_and_depth(
             o3d_color, o3d_depth, depth_scale=1000.0, depth_trunc=args.depth_trunc,
             convert_rgb_to_intensity=False)
-        rgbd = o3d.geometry.RGBDImage.create_from_color_and_depth(  # rgbd 정합용
-            o3d_color, o3d_depth, depth_scale=1000.0, depth_trunc=args.depth_trunc)
 
-        cur_odom = odom_at(stamp_ns(dmsg)) @ T_base_cam if odoms else None
-        if prev_rgbd is None:
-            pose = cur_odom if cur_odom is not None else np.eye(4)
-        elif pose_mode == 'odom':
-            pose = correction @ cur_odom
-        else:
-            init = np.linalg.inv(prev_odom) @ cur_odom if pose_mode == 'hybrid' else np.eye(4)
-            ok, T_prev_cur, _ = o3d.pipelines.odometry.compute_rgbd_odometry(
-                rgbd, prev_rgbd, intr, init, jac, odo_opt)
-            if not ok:
-                rgbd_fail += 1
-                if pose_mode == 'rgbd':
-                    continue
-                T_prev_cur = init  # hybrid: odom 으로 대신
-            pose = prev_pose @ T_prev_cur
+        cur_odom = odom_at(stamp_ns(dmsg)) @ T_base_cam
+        pose = correction @ cur_odom
 
         if icp is not None:
             moved = None   # 로봇 중심(base_link)이 직전 프레임 대비 움직인 거리
-            if cur_odom is not None and prev_odom is not None:
+            if prev_odom is not None:
                 Tbc_inv = np.linalg.inv(T_base_cam)
                 moved = np.linalg.norm((cur_odom @ Tbc_inv)[:3, 3] - (prev_odom @ Tbc_inv)[:3, 3])
             rgbd_icp = rgbd_col if raw_depth is depth else o3d.geometry.RGBDImage.create_from_color_and_depth(
                 o3d_color, o3d.geometry.Image(raw_depth), depth_scale=1000.0, depth_trunc=args.depth_trunc,
                 convert_rgb_to_intensity=False)
             pose = icp.refine(rgbd_icp, pose, moved)
-            if pose_mode == 'odom':
-                correction = pose @ np.linalg.inv(cur_odom)
+            correction = pose @ np.linalg.inv(cur_odom)
 
         volume.integrate(rgbd_col, intr, np.linalg.inv(pose))
         poses.append(pose)
-        prev_rgbd, prev_pose, prev_odom = rgbd, pose, cur_odom
+        prev_odom = cur_odom
         used += 1
         if used % 10 == 0:
             print(f'  {used} 프레임 합침...')
 
-    print(f'합친 프레임 {used} 개  (시간 안 맞아 버림 {skipped_sync}, 영상 정합 실패 {rgbd_fail})')
+    print(f'합친 프레임 {used} 개  (시간 안 맞아 버림 {skipped_sync})')
     if icp is not None:
         print(f'ICP 보정: 적용 {icp.accepted} 번, 너무 크거나 안 맞아 버림 {icp.rejected} 번')
     if used < 3:

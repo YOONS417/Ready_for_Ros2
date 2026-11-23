@@ -23,7 +23,7 @@ from std_msgs.msg import String
 from std_srvs.srv import Trigger
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from scan_motion import StepExecutor, make_pattern, parse_custom  # noqa: E402
+from scan_motion import StepExecutor, make_pattern  # noqa: E402
 
 TOPICS = ['/camera/color/image_raw', '/camera/depth/image_raw', '/camera/color/camera_info',
           '/camera/depth/camera_info', '/odom', '/tf', '/tf_static', '/gas/scd41/co2']
@@ -35,14 +35,10 @@ class AutoScan(Node):
     def __init__(self):
         super().__init__('auto_scan')
         p = self.declare_parameter
-        self.pattern = p('pattern', '').value  # approach/sweep/panorama/arc/custom (비우면 자동)
-        self.custom = p('steps', '').value  # custom 용 '0.1,15; 0,-30'
+        self.pattern = p('pattern', 'panorama').value  # panorama/arc
         self.dwell = p('dwell', 2.0).value  # 멈춤 시간 s
         self.target_dist = p('target_dist', 0.9).value  # arc 반지름 m
-        self.allow_in_place = p('allow_in_place', True).value  # 조향 모드면 false
         self.start_mode = p('start', 'now').value  # now/service/explorer
-        if not self.pattern:   # 가스 탐색 뒤에는 물체 방향을 모르니 제자리 한 바퀴
-            self.pattern = 'panorama' if self.start_mode == 'explorer' else 'approach'
         self.record = p('record', True).value
         self.bag_dir = os.path.expanduser(p('bag_dir', '~').value)
         self.bag_name = p('bag_name', '').value  # 비우면 scan_날짜
@@ -52,7 +48,7 @@ class AutoScan(Node):
         # auto_explorer 를 -r /cmd_vel:=<이 토픽> 으로 실행하면, 촬영 중이 아닐 때만 /cmd_vel 로 넘겨줌
         self.explorer_cmd = p('explorer_cmd_topic', '').value
         self.exec = StepExecutor(lin_speed=p('lin_speed', 0.08).value, ang_speed=p('ang_speed', 0.5).value,
-                                 front_stop=p('front_stop', 0.30).value, allow_in_place=self.allow_in_place)
+                                 front_stop=p('front_stop', 0.30).value)
 
         self.cmd_pub = self.create_publisher(Twist, self.cmd_topic, 10)
         self.status_pub = self.create_publisher(String, '/scan_status', 10)
@@ -122,13 +118,10 @@ class AutoScan(Node):
 
     def begin(self):
         try:
-            self.steps = parse_custom(self.custom) if self.pattern == 'custom' else \
-                make_pattern(self.pattern, target_dist=self.target_dist)
+            self.steps = make_pattern(self.pattern, target_dist=self.target_dist)
         except ValueError as e:
             self.fail(str(e))
             return
-        if not self.allow_in_place and any(s[0] == 'goto' or abs(s[1]) < 1e-3 for s in self.steps):
-            self.get_logger().warn('제자리 회전이 꺼져 있어 일부 단계는 건너뜁니다. pattern:=approach 를 추천합니다.')
         self.k = 0
         self.name = self.bag_name or time.strftime('scan_%Y%m%d_%H%M%S')
         self.path = os.path.join(self.bag_dir, self.name)

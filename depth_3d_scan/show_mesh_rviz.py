@@ -21,7 +21,7 @@ PLY_TYPES = {'char': 'i1', 'int8': 'i1', 'uchar': 'u1', 'uint8': 'u1', 'short': 
 
 
 def read_ply(path):
-    """삼각형 PLY 를 읽어 (꼭짓점 Nx3, 색 Nx3 [0~1] 또는 None, 삼각형 Mx3) 반환."""
+    """reconstruct_from_bag.py 가 만든 이진 PLY 를 읽어 (꼭짓점 Nx3, 색 Nx3 [0~1] 또는 None, 삼각형 Mx3) 반환."""
     with open(path, 'rb') as f:
         if f.readline().strip() != b'ply':
             raise ValueError('PLY 파일이 아닙니다')
@@ -40,25 +40,12 @@ def read_ply(path):
             elif p[0] == 'property':
                 elems[-1]['props'].append(('list', p[2], p[3], p[4]) if p[1] == 'list' else (p[1], p[2]))
         body = f.read()
+    if fmt not in ('binary_little_endian', 'binary_big_endian'):
+        raise ValueError(f'이진 PLY 만 읽습니다 (지금 형식: {fmt})')
 
     end = '<' if fmt == 'binary_little_endian' else '>'
     data, off = {}, 0
-    if fmt == 'ascii':
-        tokens = iter(body.split())
     for e in elems:
-        if fmt == 'ascii':
-            rows = []
-            for _ in range(e['count']):
-                row = []
-                for pr in e['props']:
-                    if pr[0] == 'list':
-                        n = int(next(tokens))
-                        row.append([float(next(tokens)) for _ in range(n)])
-                    else:
-                        row.append(float(next(tokens)))
-                rows.append(row)
-            data[e['name']] = (e['props'], rows)
-            continue
         if all(pr[0] != 'list' for pr in e['props']):
             dt = np.dtype([(pr[1], end + PLY_TYPES[pr[0]]) for pr in e['props']])
             arr = np.frombuffer(body, dtype=dt, count=e['count'], offset=off)
@@ -75,18 +62,10 @@ def read_ply(path):
             data[e['name']] = arr['i']
 
     v = data['vertex']
-    if fmt == 'ascii':
-        names = [pr[1] for pr in v[0]]
-        va = np.array(v[1], float)
-        col = lambda k: va[:, names.index(k)]
-        has = lambda k: k in names
-        faces = np.array([r[0] for r in data['face'][1]], int)
-    else:
-        col = lambda k: v[k].astype(float)
-        has = lambda k: k in v.dtype.names
-        faces = np.asarray(data['face'], int)
-    verts = np.stack([col('x'), col('y'), col('z')], 1)
-    colors = np.stack([col('red'), col('green'), col('blue')], 1) / 255.0 if has('red') else None
+    faces = np.asarray(data['face'], int)
+    verts = np.stack([v['x'], v['y'], v['z']], 1).astype(float)
+    colors = (np.stack([v['red'], v['green'], v['blue']], 1) / 255.0
+              if 'red' in v.dtype.names else None)
     return verts, colors, faces
 
 
