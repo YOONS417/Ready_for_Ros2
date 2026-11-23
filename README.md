@@ -248,6 +248,25 @@ ros2 run webots_ros2_limo auto_explorer --ros-args -p gas_adc_stop_threshold:=40
 
 The explorer stops on the first sample at or above 400 ADC. Three consecutive high samples confirm persistent detection; three consecutive samples at or below the 360 ADC release threshold resume frontier exploration. Persistent detection starts an adaptive stop-measure-move search: it waits 5 seconds at each stop, records the median of 3 ADC samples and their time slope, then moves one 0.3 m step. The next direction continues along the last movement when `(spatial ADC change + clipped rate × rate_weight_sec)` reaches 15 ADC; otherwise it turns by a non-cardinal 137.5 degrees and tries another nearby step. The rate contribution is clipped to `gas_probe_max_rate_gain` so a brief noisy slope cannot dominate. After 3 consecutive unhelpful steps or 5 total moves, the robot returns to the position with the highest measured median and stops. A move or turn times out after 15 seconds. Tune `gas_adc_stop_threshold`, `gas_adc_release_threshold`, `gas_confirm_samples`, `gas_probe_distance`, `gas_probe_settle_sec`, `gas_probe_sample_count`, `gas_probe_min_delta`, `gas_probe_rate_weight_sec`, `gas_probe_max_rate_gain`, `gas_probe_max_moves`, `gas_probe_max_flat_steps`, `gas_probe_heading_change_deg`, `gas_probe_arrival_tolerance`, `gas_probe_turn_tolerance`, and `gas_probe_move_timeout_sec` for the test environment. MQ-3 response can be much slower than serial sampling, so validate the 5-second settling period experimentally. This behavior applies to `auto_explorer` only, not teleop or Nav2 commands.
 
+## Depth 3D scan (`depth_3d_scan/`)
+
+After `auto_explorer` finishes the gas search (`GAS_STOPPED`), the robot turns in place and records the depth camera, then a colored 3D mesh of the spot is reconstructed on the laptop. Details: [`depth_3d_scan/README.md`](depth_3d_scan/README.md)
+
+Run the explorer with its velocity remapped so the scan node takes over only while scanning:
+
+```bash
+ros2 run webots_ros2_limo auto_explorer --ros-args -r /cmd_vel:=/cmd_vel_explorer
+python3 depth_3d_scan/auto_scan_node.py --ros-args -p start:=explorer -p explorer_cmd_topic:=/cmd_vel_explorer
+```
+
+Reconstruct and view on the laptop (`pip install open3d==0.19.0 rosbags "numpy<2"`):
+
+```bash
+python3 depth_3d_scan/reconstruct_from_bag.py ~/scan_<date>_small --every 1 --max-dt 0.1 --depth-trunc 1.5 --best --to-map --out scene.ply
+python3 depth_3d_scan/show_mesh_rviz.py scene.ply
+rviz2 -d depth_3d_scan/scene_mesh.rviz
+```
+
 ## AMG88xx Arduino thermal camera test
 
 The AMG88xx test sketch is in `arduino/amg88xx_test/amg88xx_test.ino`. In Arduino IDE, install **Adafruit AMG88xx** from Library Manager (also install **Adafruit BusIO** if prompted), select the board and port, then upload the sketch. For an Arduino Uno, select **Arduino Uno**. Connect the AMG88xx breakout's power, ground, SDA, and SCL pins to the matching board pins.
@@ -302,6 +321,7 @@ webots_ros2_limo/
 │       └── nav2_params.yaml    # Nav2 parameters (DWB, holonomic)
 ├── webots_ros2_limo/
 │   └── limo_sensors.py         # /scan, /imu, /odom, /camera/* like the real robot
+├── depth_3d_scan/              # depth camera 3D scan & reconstruction (see its README)
 ├── doc/
 │   └── cartographer.gif, nav2.gif, mecanum.gif
 ├── rviz/
