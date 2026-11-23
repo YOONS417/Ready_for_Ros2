@@ -259,12 +259,10 @@ ros2 run webots_ros2_limo auto_explorer --ros-args -r /cmd_vel:=/cmd_vel_explore
 python3 depth_3d_scan/auto_scan_node.py --ros-args -p start:=explorer -p explorer_cmd_topic:=/cmd_vel_explorer
 ```
 
-Reconstruct and view on the laptop (`pip install open3d==0.19.0 rosbags "numpy<2"`):
+Reconstruct on the laptop (`pip install open3d==0.19.0 rosbags "numpy<2"`). Noise is removed before export, and the output is a compact binary PLY (float32 xyz + uint8 rgb, no normals) for the OpenGL viewer:
 
 ```bash
-python3 depth_3d_scan/reconstruct_from_bag.py ~/scan_<date>_small --every 1 --max-dt 0.1 --depth-trunc 1.5 --best --out scene.ply
-python3 depth_3d_scan/show_mesh_rviz.py scene.ply
-rviz2 -d depth_3d_scan/scene_mesh.rviz
+python3 depth_3d_scan/reconstruct_from_bag.py ~/scan_<date>_small --out scene.ply --gl
 ```
 
 ## AMG88xx Arduino thermal camera test
